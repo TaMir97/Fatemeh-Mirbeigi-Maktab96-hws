@@ -14,6 +14,28 @@ public class ShareholderBrandRepoImpl implements ShareholderBrandRepo {
         this.connection = connection;
     }
 
+
+    @Override
+    public int addRelation(Shareholder shareholder, Brand brand) {
+        String addQuery = """
+                insert into shareholder_brand (brand_id, shareholder_id)
+                values (?, ?)
+                """;
+
+        int rowsInserted;
+        try {
+            PreparedStatement statement = connection.prepareStatement(addQuery);
+            statement.setLong(1, brand.getBrandID());
+            statement.setLong(2, shareholder.getShareholderID());
+
+            rowsInserted = statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return rowsInserted;
+    }
+
     @Override
     public ShareholderBrand[] loadByShareholder(Shareholder shareholder) {
         int shareholderCount = 0;

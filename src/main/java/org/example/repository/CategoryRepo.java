@@ -3,7 +3,7 @@ package org.example.repository;
 import org.example.entity.Category;
 
 public interface CategoryRepo {
-    void addNewCategory(Category category);
+    int addNewCategory(Category category);
 
     int updateCategory(Category category);
 
@@ -12,4 +12,6 @@ public interface CategoryRepo {
     Category isExist(String categoryName);
 
     Category[] loadAllCategories();
+
+    public int recordCounter();
 }

@@ -13,12 +13,12 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public void signUp(User user) {
+    public int signUp(User user) {
         String saveSql = """
                 insert into users ("name", user_name, password, email)
                 values (?, ?, ?,?)
                 """;
-
+        int insertedRows;
         try {
             PreparedStatement saveStatement = connection.prepareStatement(saveSql, Statement.RETURN_GENERATED_KEYS);
 
@@ -26,21 +26,20 @@ public class UserRepoImpl implements UserRepo {
             saveStatement.setString(2, user.getUsername());
             saveStatement.setString(3, user.getPassword());
             saveStatement.setString(4, user.getEmail());
-            saveStatement.executeUpdate();
+            insertedRows = saveStatement.executeUpdate();
 
 
             ResultSet generatedKeys = saveStatement.getGeneratedKeys();
             generatedKeys.next();
             long id = generatedKeys.getLong(1);
-
             user.setUserID(id);
-            user.setSignedIn(false);
 
             saveStatement.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return insertedRows;
     }
 
     @Override
@@ -63,7 +62,6 @@ public class UserRepoImpl implements UserRepo {
                 user.setUsername(resultSet.getString(3));
                 user.setPassword(resultSet.getString(4));
                 user.setEmail(resultSet.getString(5));
-                user.setSignedIn(true);
             }
             preparedStatement.close();
             resultSet.close();
@@ -95,10 +93,9 @@ public class UserRepoImpl implements UserRepo {
                 String userName = result.getString(3);
                 String password = result.getString(4);
                 String email = result.getString(5);
-                boolean state = result.getBoolean(6);
 
                 findByUsernameStatement.close();
-                return new User(id,name,userName,password,email,state);
+                return new User(id,name,userName,password,email);
 
             } else {
                 findByUsernameStatement.close();

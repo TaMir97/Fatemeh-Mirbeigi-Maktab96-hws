@@ -14,16 +14,17 @@ public class CategoryRepoImpl implements CategoryRepo {
 
 
     @Override
-    public void addNewCategory(Category category) {
+    public int addNewCategory(Category category) {
         String addCategorySql = """
                 insert into category (category_name, description)
                 values (?, ?)""";
 
+        int insertedRows;
         try {
             PreparedStatement addCategoryStatement = connection.prepareStatement(addCategorySql, Statement.RETURN_GENERATED_KEYS);
             addCategoryStatement.setString(1, category.getCategoryName());
             addCategoryStatement.setString(2, category.getDescription());
-            addCategoryStatement.executeUpdate();
+            insertedRows = addCategoryStatement.executeUpdate();
 
             ResultSet generatedId = addCategoryStatement.getGeneratedKeys();
             generatedId.next();
@@ -34,6 +35,7 @@ public class CategoryRepoImpl implements CategoryRepo {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return insertedRows;
     }
 
     @Override
@@ -132,6 +134,7 @@ public class CategoryRepoImpl implements CategoryRepo {
         return categories;
     }
 
+    @Override
     public int recordCounter() {
         int count;
         try {

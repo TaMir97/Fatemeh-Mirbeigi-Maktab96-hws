@@ -6,7 +6,6 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private boolean isSignedIn;
 
     public User() {
     }
@@ -18,7 +17,7 @@ public class User {
         this.email = email;
     }
 
-    public User(long userID, String name, String username, String password, String email, boolean isSignedIn) {
+    public User(long userID, String name, String username, String password, String email) {
         this(name, username, password, email);
         this.userID = userID;
     }
@@ -63,14 +62,6 @@ public class User {
         this.email = email;
     }
 
-    public boolean isSignedIn() {
-        return isSignedIn;
-    }
-
-    public void setSignedIn(boolean signedIn) {
-        isSignedIn = signedIn;
-    }
-
     @Override
     public String toString() {
         return "User:\n " +
@@ -78,7 +69,6 @@ public class User {
                 ", name: " + name +
                 ", username: " + username +
                 ", password: " + password +
-                ", email: " + email +
-                ", isSignedIn: " + isSignedIn + "\n";
+                ", email: " + email +"\n";
     }
 }

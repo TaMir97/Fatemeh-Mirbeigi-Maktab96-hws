@@ -48,6 +48,5 @@ create table users
     name      varchar(50)        not null,
     user_name varchar(50) unique not null,
     password  varchar(50)        not null,
-    email     varchar unique     not null,
-    isSignedIn boolean
+    email     varchar unique     not null
 );

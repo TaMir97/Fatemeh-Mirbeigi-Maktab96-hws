@@ -22,8 +22,10 @@ public class Menu {
                     UserActivity.signup();
                 }
                 case 2 -> {
-                    Printer.printMsg(UserActivity.login() + Constants.ALERT_USER_LOGIN);
-                    accessDatabase(input.nextLine());
+                    if(UserActivity.login()!=null) {
+                        Printer.printMsg(UserActivity.login() + Constants.ALERT_USER_LOGIN);
+                        accessDatabase(input.nextLine());
+                    }
                 }
                 case 3 -> {
                     breakLoop = true;
@@ -61,8 +63,6 @@ public class Menu {
 
             }
 
-        } else {
-            return;
         }
     }
 

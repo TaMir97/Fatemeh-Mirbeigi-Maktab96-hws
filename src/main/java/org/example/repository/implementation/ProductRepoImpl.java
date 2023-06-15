@@ -43,9 +43,9 @@ public class ProductRepoImpl implements ProductRepo {
     @Override
     public int updateProduct(Product product) {
         String updateProductQuery = """
-        update product set product_name = ?, category_id = ?, brand_id = ?
-        where product_id = ?
-        """;
+                update product set product_name = ?, category_id = ?, brand_id = ?
+                where product_id = ?
+                """;
         int changedRows;
         try {
             PreparedStatement updateProductStatement = connection.prepareStatement(updateProductQuery);
@@ -104,10 +104,74 @@ public class ProductRepoImpl implements ProductRepo {
                 long brandId = result.getLong(5);
 
                 findByProductNameStatement.close();
-                return new Product(id,name,date,catId,brandId);
+                return new Product(id, name, date, catId, brandId);
 
             } else {
                 findByProductNameStatement.close();
+                return null;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Product findByBrand(Long brandID) {
+        String findByBrandSql = """
+                select * from product
+                where brand_id = ?
+                """;
+        try {
+            PreparedStatement brandIDStatement = connection.prepareStatement(findByBrandSql);
+            brandIDStatement.setLong(1, brandID);
+            ResultSet result = brandIDStatement.executeQuery();
+
+
+            if (result.next()) {
+                long id = result.getLong(1);
+                String name = result.getString(2);
+                Date date = result.getDate(3);
+                long catId = result.getLong(4);
+                long brandId = result.getLong(5);
+
+                brandIDStatement.close();
+                return new Product(id, name, date, catId, brandId);
+
+            } else {
+                brandIDStatement.close();
+                return null;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Product findByCategory(Long categoryID) {
+        String findByCategorySql = """
+                select * from product
+                where category_id = ?
+                """;
+        try {
+            PreparedStatement categoryIDStatement = connection.prepareStatement(findByCategorySql);
+            categoryIDStatement.setLong(1, categoryID);
+            ResultSet result = categoryIDStatement.executeQuery();
+
+
+            if (result.next()) {
+                long id = result.getLong(1);
+                String name = result.getString(2);
+                Date date = result.getDate(3);
+                long catId = result.getLong(4);
+                long brandId = result.getLong(5);
+
+                categoryIDStatement.close();
+                return new Product(id, name, date, catId, brandId);
+
+            } else {
+                categoryIDStatement.close();
                 return null;
             }
 

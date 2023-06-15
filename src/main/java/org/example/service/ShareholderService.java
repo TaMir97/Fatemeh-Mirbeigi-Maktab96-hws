@@ -1,9 +1,8 @@
-package org.example.repository;
+package org.example.service;
 
 import org.example.entity.Shareholder;
 
-public interface ShareholderRepo {
-
+public interface ShareholderService {
     int addNewShareholder(Shareholder shareholder);
 
     int updateShareholder(Shareholder shareholder);

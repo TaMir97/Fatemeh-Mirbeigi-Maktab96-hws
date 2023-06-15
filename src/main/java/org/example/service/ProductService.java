@@ -1,9 +1,8 @@
-package org.example.repository;
+package org.example.service;
 
 import org.example.entity.Product;
 
-public interface ProductRepo {
-
+public interface ProductService {
     void addNewProduct(Product product);
 
     int updateProduct(Product product);
@@ -12,9 +11,9 @@ public interface ProductRepo {
 
     Product isExist(String productName);
 
+    Product[] loadAllProducts();
+
     Product findByBrand(Long brandName);
 
     Product findByCategory(Long categoryName);
-
-    Product[] loadAllProducts();
 }

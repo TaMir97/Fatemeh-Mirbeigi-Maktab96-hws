@@ -15,17 +15,18 @@ public class ShareholderRepoImpl implements ShareholderRepo {
 
 
     @Override
-    public void addNewShareholder(Shareholder shareholder) {
+    public int addNewShareholder(Shareholder shareholder) {
         String addShareholderSql = """
                 insert into shareholder (shareholder_name, phone_number, national_code)
                 values (?, ?, ?)""";
+        int added = 0;
 
         try {
             PreparedStatement addShareholderStatement = connection.prepareStatement(addShareholderSql, Statement.RETURN_GENERATED_KEYS);
             addShareholderStatement.setString(1, shareholder.getShareholderName());
             addShareholderStatement.setLong(2, shareholder.getPhoneNumber());
             addShareholderStatement.setLong(2, shareholder.getNationalCode());
-            addShareholderStatement.executeUpdate();
+            added = addShareholderStatement.executeUpdate();
 
             ResultSet generatedId = addShareholderStatement.getGeneratedKeys();
             generatedId.next();
@@ -37,6 +38,7 @@ public class ShareholderRepoImpl implements ShareholderRepo {
             throw new RuntimeException(e);
         }
 
+        return added;
     }
 
     @Override

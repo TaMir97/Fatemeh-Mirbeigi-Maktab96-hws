@@ -3,7 +3,7 @@ package org.example.repository;
 import org.example.entity.Brand;
 
 public interface BrandRepo {
-    int addNewBrand(Brand brand);
+    void addNewBrand(Brand brand);
 
     int updateBrand(Brand brand);
 
@@ -12,5 +12,6 @@ public interface BrandRepo {
     Brand isExist(String brandName);
 
     Brand[] loadAllBrands();
-    public int recordCounter();
+
+    int recordCounter();
 }

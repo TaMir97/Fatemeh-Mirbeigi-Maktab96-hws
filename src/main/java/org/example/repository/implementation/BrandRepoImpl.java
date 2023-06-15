@@ -14,18 +14,17 @@ public class BrandRepoImpl implements BrandRepo {
 
 
     @Override
-    public int addNewBrand(Brand brand) {
+    public void addNewBrand(Brand brand) {
         String addBrandSql = """
                 insert into brand (brand_name, website, description)
                 values (?, ?, ?)""";
 
-        int insertedRows;
         try {
             PreparedStatement addBrandStatement = connection.prepareStatement(addBrandSql, Statement.RETURN_GENERATED_KEYS);
             addBrandStatement.setString(1, brand.getBrandName());
             addBrandStatement.setString(2, brand.getWebsite());
             addBrandStatement.setString(3, brand.getDescription());
-            insertedRows = addBrandStatement.executeUpdate();
+            addBrandStatement.executeUpdate();
 
             ResultSet generatedId = addBrandStatement.getGeneratedKeys();
             generatedId.next();
@@ -36,8 +35,6 @@ public class BrandRepoImpl implements BrandRepo {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        return insertedRows;
     }
 
     @Override
@@ -138,7 +135,6 @@ public class BrandRepoImpl implements BrandRepo {
         }
         return brands;
     }
-
     @Override
     public int recordCounter() {
         int count;

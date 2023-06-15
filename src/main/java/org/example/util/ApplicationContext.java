@@ -1,4 +1,4 @@
-//package org.example.util;
+package org.example.util;//package org.example.util;
 //
 //import org.example.connection.DBConnection;
 //import org.example.repository.implementation.BrandRepo;

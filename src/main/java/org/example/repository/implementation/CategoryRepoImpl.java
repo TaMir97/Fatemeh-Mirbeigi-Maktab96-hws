@@ -133,7 +133,6 @@ public class CategoryRepoImpl implements CategoryRepo {
         }
         return categories;
     }
-
     @Override
     public int recordCounter() {
         int count;

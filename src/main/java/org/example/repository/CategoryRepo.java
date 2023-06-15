@@ -13,5 +13,5 @@ public interface CategoryRepo {
 
     Category[] loadAllCategories();
 
-    public int recordCounter();
+    int recordCounter();
 }

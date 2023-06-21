@@ -23,6 +23,14 @@ public abstract class BaseRepositoryImpl<ID extends Serializable, TYPE extends B
         }
 
     }
+    @Override
+    public void update(TYPE entity) throws SQLException {
+        String sql = "update " + getTableName() + " set " + getUpdateQueryParams() + " where " + getTableMainId() + "  = ?";
+        try (PreparedStatement statement = DBConnection.getConnection().prepareStatement(sql)) {
+            fillParamForStatementForUpdate(statement, entity);
+            statement.executeUpdate();
+        }
+    }
 
     @Override
     public void delete(ID id) throws SQLException {
@@ -58,14 +66,7 @@ public abstract class BaseRepositoryImpl<ID extends Serializable, TYPE extends B
         return null;
     }
 
-    @Override
-    public void update(TYPE entity) throws SQLException {
-        String sql = "update " + getTableName() + " set " + getUpdateQueryParams() + " where " + getTableMainId() + "  = ?";
-        try (PreparedStatement statement = DBConnection.getConnection().prepareStatement(sql)) {
-            fillParamForStatement(statement, entity);
-            statement.executeUpdate();
-        }
-    }
+
 
     public abstract String getTableName();
 
@@ -80,4 +81,6 @@ public abstract class BaseRepositoryImpl<ID extends Serializable, TYPE extends B
     public abstract TYPE mapResultSetToEntity(ResultSet resultSet) throws SQLException;
 
     public abstract void fillParamForStatement(PreparedStatement preparedStatement, TYPE entity) throws SQLException;
+    public abstract void fillParamForStatementForUpdate(PreparedStatement preparedStatement, TYPE entity) throws SQLException;
+
 }

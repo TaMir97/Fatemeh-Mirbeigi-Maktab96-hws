@@ -29,9 +29,9 @@ public class ApplicationContext {
         userService = new UserServiceImpl(userRepository);
         productRepository = new ProductRepositoryImpl();
         productService = new ProductServiceImpl(productRepository);
-        typeRepository = new TypeRepositoryImpl();
+        typeRepository = new TypeRepositoryImpl(connection);
         typeService = new TypeServiceImpl(typeRepository);
-        categoryRepository = new CategoryRepositoryImpl();
+        categoryRepository = new CategoryRepositoryImpl(connection);
         categoryService = new CategoryServiceImpl(categoryRepository);
         cartItemRepository = new CartItemRepositoryImpl();
         cartItemService = new CartServiceImpl(cartItemRepository);

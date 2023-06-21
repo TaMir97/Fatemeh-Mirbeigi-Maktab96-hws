@@ -10,6 +10,6 @@ import org.example.base.entity.BaseEntity;
 @ToString
 public class Cart extends BaseEntity<Long> {
     private Long userID;
-    private int availability;
+    private int totalItems;
     private long paycheck;
 }

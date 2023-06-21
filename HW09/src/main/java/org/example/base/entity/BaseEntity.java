@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 
-public class baseEntity<ID> {
+public class BaseEntity<ID> {
     protected ID id;
 }

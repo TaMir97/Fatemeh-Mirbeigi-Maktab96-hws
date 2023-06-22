@@ -34,29 +34,34 @@ public class ApplicationContext {
         categoryRepository = new CategoryRepositoryImpl(connection);
         categoryService = new CategoryServiceImpl(categoryRepository);
         cartItemRepository = new CartItemRepositoryImpl();
-        cartItemService = new CartServiceImpl(cartItemRepository);
+        cartItemService = new CartItemServiceImpl(cartItemRepository, productService);
         cartRepository = new CartRepositoryImpl();
         cartService = new CartServiceImpl(cartRepository);
 
 
     }
 
-    public static UserService getUserService(){
+    public static UserService getUserService() {
         return userService;
     }
-    public static ProductService getProductService(){
+
+    public static ProductService getProductService() {
         return productService;
     }
-    public static TypeService getTypeService(){
+
+    public static TypeService getTypeService() {
         return typeService;
     }
-    public static CategoryService getCategoryService(){
+
+    public static CategoryService getCategoryService() {
         return categoryService;
     }
-    public static CartService getCartService(){
+
+    public static CartService getCartService() {
         return cartService;
     }
-    public static CartItemService getCartItemService(){
+
+    public static CartItemService getCartItemService() {
         return cartItemService;
     }
 

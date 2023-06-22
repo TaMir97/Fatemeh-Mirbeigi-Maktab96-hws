@@ -52,7 +52,15 @@ public class ProductRepositoryImpl
     }
 
     @Override
-    public void updateAvailability(Product product, int chosenItems) throws SQLException {
+    public void updateAvailabilityDelete(Product product, int chosenItems) throws SQLException {
+        String sql = "update products set availability = ? where productid = ?";
+        try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql)) {
+            preparedStatement.setInt(1, product.getAvailability() + chosenItems);
+            preparedStatement.setLong(2, product.getId());
+            preparedStatement.executeUpdate();
+        }
+    }
+    public void updateAvailabilityAdd(Product product, int chosenItems) throws SQLException {
         String sql = "update products set availability = ? where productid = ?";
         try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql)) {
             preparedStatement.setInt(1, product.getAvailability() - chosenItems);

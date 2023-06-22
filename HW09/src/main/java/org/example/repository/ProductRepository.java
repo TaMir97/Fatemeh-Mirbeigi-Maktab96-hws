@@ -10,9 +10,8 @@ import java.util.List;
 
 public interface ProductRepository extends BaseRepository<Long, Product> {
     List<Product> findByCategory(String category) throws SQLException, NotDefinedCategory;
-
     List<Product> findByType(String type) throws SQLException, NotDefinedType;
-
-    void updateAvailability(Product product, int chosenItems) throws SQLException;
+    public void updateAvailabilityAdd(Product product, int chosenItems) throws SQLException;
+    void updateAvailabilityDelete(Product product, int chosenItems) throws SQLException;
 
 }

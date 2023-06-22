@@ -16,12 +16,12 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<Product> cartDetails(Cart cart) throws SQLException {
-        return cartRepository.cartDetails(cart);
+    public List<Product> cartDetails() throws SQLException {
+        return cartRepository.cartDetails();
     }
 
     @Override
-    public List<Cart> finalCart(Cart cart) throws SQLException {
-        return cartRepository.finalCart(cart);
+    public List<Cart> finalCart() throws SQLException {
+        return cartRepository.finalCart();
     }
 }

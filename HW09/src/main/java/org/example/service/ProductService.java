@@ -11,6 +11,6 @@ import java.util.List;
 public interface ProductService extends BaseService<Long, Product> {
     List<Product> findByCategory(String category) throws SQLException, NotDefinedCategory;
     List<Product> findByType(String type) throws SQLException, NotDefinedType;
-    public void updateAvailabilityAdd(Product product, int chosenItems) throws SQLException;
+    void updateAvailabilityAdd(Product product, int chosenItems) throws SQLException;
     void updateAvailabilityDelete(Product product, int chosenItems) throws SQLException;
 }

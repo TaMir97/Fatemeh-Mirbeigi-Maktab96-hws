@@ -2,6 +2,12 @@ package org.example.util;
 
 public class Constant {
 
+    public static String[] RUN_ITEMS = {"Signup", "Login", "Checkout"};
+    public static String ALERT_USER_LOGIN = "\n logged in successfully, want to start shopping?(y/n)";
+    public static String ALERT_EXIT = "Exited.";
+    public static String ALERT_CHOICE = "No such choice.";
+    public static String[] SHOPPING_ITEMS = {"All products", "Products by Category", "Products by Type","Exit"};
+
     public static final String ITEM_NOT_FOUND = "Item not found";
     public static final String BAD_CREDENTIAL="Bad credential! try again...";
     public static final String USER_NOT_FOUND="User not found! try again...";

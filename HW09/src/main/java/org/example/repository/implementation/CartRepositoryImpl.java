@@ -16,15 +16,14 @@ public class CartRepositoryImpl
         extends BaseRepositoryImpl<Long, Cart>
         implements CartRepository {
     @Override
-    public List<Product> cartDetails(Cart cart) throws SQLException {
+    public List<Product> cartDetails() throws SQLException {
         String sql = """
                 select category_name, type_name, count(products.productid) as total_items, sum(price)
                 from products
                          join cart_items ci on ci.productid = products.productid
-                         join cart c on ci.cartid = ?
+                         join cart c on ci.cartid = c.cartid
                 group by category_name, type_name""";
         try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql)) {
-            preparedStatement.setLong(1, cart.getId());
             ResultSet cartProducts = preparedStatement.executeQuery();
             List<Product> products = new ArrayList<>();
             while (cartProducts.next()) {
@@ -39,15 +38,14 @@ public class CartRepositoryImpl
     }
 
     @Override
-    public List<Cart> finalCart(Cart cart) throws SQLException {
+    public List<Cart> finalCart() throws SQLException {
         String sql = """
                 select userid, count(ci.productID) AS total_products, sum(price)
                                                  from products
                                                           join cart_items ci on products.productid = ci.productid
-                                                          join cart c on ci.cartid = ?
+                                                          join cart c on ci.cartid = c.userid
                                                  group by c.cartID;""";
         try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql)) {
-            preparedStatement.setLong(1, cart.getId());
             ResultSet finalCart = preparedStatement.executeQuery();
             List<Cart> carts = new ArrayList<>();
             while (finalCart.next()) {

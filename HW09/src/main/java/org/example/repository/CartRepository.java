@@ -8,6 +8,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CartRepository {
-    List<Product> cartDetails(Cart cart) throws SQLException;
-    List<Cart> finalCart(Cart cart) throws SQLException;
+    List<Product> cartDetails() throws SQLException;
+    List<Cart> finalCart() throws SQLException;
 }

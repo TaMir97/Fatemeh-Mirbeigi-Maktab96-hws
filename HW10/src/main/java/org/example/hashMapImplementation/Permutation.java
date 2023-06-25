@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Permutation {
-    public static List<String> permutation(String word) {
+    protected static List<String> permutation(String word) {
         List<String> result = new ArrayList<>(factorial(word.length()));
         String newWord;
         int count = 1;

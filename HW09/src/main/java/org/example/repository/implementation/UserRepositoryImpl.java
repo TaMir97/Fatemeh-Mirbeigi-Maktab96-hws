@@ -51,7 +51,7 @@ public class UserRepositoryImpl
 
     @Override
     public String getColumnsName() {
-        return "(first_name, lastname, user_name, password, email)";
+        return "(firstname, lastname, user_name, password, email)";
     }
 
     @Override

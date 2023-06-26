@@ -7,38 +7,37 @@ import java.util.Set;
 
 public class Permutation {
     protected static List<String> permutation(String word) {
-        List<String> result = new ArrayList<>(factorial(word.length()));
-        String newWord;
+        List<String> result = new ArrayList<>();
         int count = 1;
-        while (count < factorial(word.length()) + 1) {
+        int wordLength = word.length();
+        if (wordLength <= 1){
+            throw new IndexOutOfBoundsException();
+        }
+        while (count < factorial(wordLength) + 1) {
             char[] eachChar = word.toCharArray();
 
-            for (int i = 0; i < eachChar.length; i++) {
-                newWord = Character.toString(eachChar[i]);
-                for (int k = 0; k < eachChar.length; k++) {
+            for (int i = 0; i < wordLength; i++) {
+                String newWord = Character.toString(eachChar[i]);
+                for (int k = 0; k < wordLength; k++) {
                     if (i != k) {
-                        newWord += Character.toString(eachChar[k]);
-                    } else {
-                        if (i == eachChar.length - 1) {
-                            result.add(newWord);
-                            count++;
-                            newWord = swapLetters(newWord, k, k - 1);
-                            result.add(newWord);
-                        }
+                        newWord += eachChar[k];
+                    } else if (i == wordLength - 1) {
+                        result.add(newWord);
+                        count++;
+                        newWord = swapLetters(newWord, k, k - 1);
+                        result.add(newWord);
                     }
                 }
-                if (i != eachChar.length - 1) {
+                if (i != wordLength - 1) {
                     result.add(newWord);
                     count++;
                 }
                 word = newWord;
-
             }
         }
         Set<String> uniqueSet = new HashSet<>(result);
         return new ArrayList<>(uniqueSet);
     }
-
 
     private static String swapLetters(String str, int i, int j) {
         char[] charArray = str.toCharArray();
@@ -55,5 +54,4 @@ public class Permutation {
         }
         return result;
     }
-
 }

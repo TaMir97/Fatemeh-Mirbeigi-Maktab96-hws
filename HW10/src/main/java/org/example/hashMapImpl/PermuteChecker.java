@@ -1,4 +1,4 @@
-package org.example.hashMapImplementation;
+package org.example.hashMapImpl;
 
 import org.example.exception.InvalidInputException;
 

@@ -1,5 +1,7 @@
 package org.example.hashMapImplementation;
 
+import org.example.exception.InvalidInputException;
+
 import java.util.*;
 
 public class PermuteChecker {
@@ -18,7 +20,7 @@ public class PermuteChecker {
         System.out.println("second input");
         this.secondInput = input.nextLine();
         if (firstInput.length() <= 1 | secondInput.length() <= 1) {
-            throw new RuntimeException("The inputs ate not valid");
+            throw new InvalidInputException();
         }
     }
 
@@ -33,8 +35,8 @@ public class PermuteChecker {
                 return;
             }
             System.out.println("failed");
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
+        } catch (InvalidInputException e) {
+            System.out.println("The inputs ate not valid");
         }
     }
 }

@@ -8,10 +8,10 @@ import java.util.TreeSet;
 
 public class TreeSetImpl {
     private final Scanner input;
-    private TreeSet<String> firstList;
-    private TreeSet<String> secondList;
-    private TreeSet<String> unionSet;
-    private TreeSet<String> intersectionSet;
+    private final TreeSet<String> firstList;
+    private final TreeSet<String> secondList;
+    private final TreeSet<String> unionSet;
+    private final TreeSet<String> intersectionSet;
     private static final int INPUT_ELEMENTS = 10;
 
     public TreeSetImpl() {
@@ -47,7 +47,7 @@ public class TreeSetImpl {
     private void fillSets(TreeSet<String> set) {
         System.out.println("Enter a letter: ");
         String letter = input.nextLine();
-        if (Validation.inputValidation(letter)) {
+        if (Validation.inputLetterValidation(letter)) {
             set.add(letter);
         } else {
             throw new InvalidInputException();

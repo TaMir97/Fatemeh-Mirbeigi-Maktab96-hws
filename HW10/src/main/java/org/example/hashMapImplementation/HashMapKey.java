@@ -12,25 +12,25 @@ public class HashMapKey {
         this.input = new Scanner(System.in);
     }
 
-    public Map<String, List<String>> getFinalMap() {
+    public Map<String, List<String>> getMappedValues() {
         Map<String, List<String>> finalMap = new HashMap<>();
-        try {
-            String key = setKey();
-            finalMap.put(key, Permutation.permutation(key));
-        } catch (NullPointerException e) {
-            System.out.println("set the key first.");
+        boolean validKeySet = false;
+        while (!validKeySet) {
+            try {
+                String key = setKey();
+                finalMap.put(key, Permutation.permutation(key));
+                validKeySet = true;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Set a valid key first.");
+            }
         }
+
         return finalMap;
     }
 
+
     public String setKey() {
-        while (true) {
-            System.out.print("Enter the Key: ");
-            try {
-                return input.nextLine();
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("Ender a key with more than one letter:");
-            }
-        }
+        System.out.print("Enter the Key: ");
+        return input.nextLine();
     }
 }

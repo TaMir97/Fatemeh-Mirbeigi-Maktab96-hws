@@ -1,36 +1,61 @@
 package org.example.hashMapImplementation;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import javax.xml.transform.sax.SAXResult;
+import java.util.*;
 
 public class HashMapKey {
     private final Scanner input;
+    private Map<String, List<String>> hashMap;
+    private String key;
+    private List<String> values;
 
     public HashMapKey() {
         this.input = new Scanner(System.in);
     }
 
-    public Map<String, List<String>> getMappedValues() {
-        Map<String, List<String>> finalMap = new HashMap<>();
+    public void setKey() {
+        System.out.print("Enter the Key: ");
+        this.key = input.nextLine();
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setValues() {
         boolean validKeySet = false;
         while (!validKeySet) {
             try {
-                String key = setKey();
-                finalMap.put(key, Permutation.permutation(key));
+                this.values = Permutation.permutation(key);
                 validKeySet = true;
-            } catch (IndexOutOfBoundsException e) {
+            } catch (NullPointerException | IndexOutOfBoundsException e) {
                 System.out.println("Set a valid key first.");
+                setKey();
+            }
+        }
+    }
+
+    public List<String> getValues() {
+        return this.values;
+    }
+
+    public void setHashMap() {
+        boolean validKeySet = false;
+        while (!validKeySet) {
+            try {
+                this.hashMap = new HashMap<>();
+                hashMap.put(this.key, this.values);
+                validKeySet = true;
+            } catch (IndexOutOfBoundsException | NullPointerException e) {
+                System.out.println("Set a valid key first.");
+                setKey();
             }
         }
 
-        return finalMap;
     }
 
-
-    public String setKey() {
-        System.out.print("Enter the Key: ");
-        return input.nextLine();
+    public Map<String, List<String>> getHashMap() {
+        return this.hashMap;
     }
+
 }

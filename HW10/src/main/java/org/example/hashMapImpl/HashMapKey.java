@@ -1,6 +1,5 @@
-package org.example.hashMapImplementation;
+package org.example.hashMapImpl;
 
-import javax.xml.transform.sax.SAXResult;
 import java.util.*;
 
 public class HashMapKey {

@@ -14,8 +14,16 @@ public class HashMapKey {
     }
 
     public void setKey() {
-        System.out.print("Enter the Key: ");
-        this.key = input.nextLine();
+        boolean validKeySet = false;
+        while (!validKeySet) {
+            try {
+                System.out.print("Enter the Key: ");
+                this.key = input.nextLine();
+                validKeySet = true;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Set a valid key first.");
+            }
+        }
     }
 
     public String getKey() {

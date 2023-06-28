@@ -7,26 +7,26 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 public class TreeSetImpl {
-    private final Scanner input;
-    private final TreeSet<String> firstList;
-    private final TreeSet<String> secondList;
-    private final TreeSet<String> unionSet;
-    private final TreeSet<String> intersectionSet;
+    private final Scanner INPUT;
+    private final TreeSet<String> FIRST_LIST;
+    private final TreeSet<String> SECOND_LIST;
+    private final TreeSet<String> UNION_SET;
+    private final TreeSet<String> INTERSECTION_SET;
     private static final int INPUT_ELEMENTS = 10;
 
     public TreeSetImpl() {
-        this.input = new Scanner(System.in);
-        this.firstList = new TreeSet<>();
-        this.secondList = new TreeSet<>();
-        this.unionSet = new TreeSet<>();
-        this.intersectionSet = new TreeSet<>();
+        this.INPUT = new Scanner(System.in);
+        this.FIRST_LIST = new TreeSet<>();
+        this.SECOND_LIST = new TreeSet<>();
+        this.UNION_SET = new TreeSet<>();
+        this.INTERSECTION_SET = new TreeSet<>();
     }
 
     public void fillTwoSets() {
         for (int i = 1; i <= INPUT_ELEMENTS; i++) {
             System.out.println("Filling First Set ...");
             try {
-                fillSets(this.firstList);
+                fillSets(this.FIRST_LIST);
             } catch (InvalidInputException e) {
                 i--;
                 System.out.println("Wrong input format.");
@@ -36,7 +36,7 @@ public class TreeSetImpl {
         for (int i = 1; i <= INPUT_ELEMENTS; i++) {
             System.out.println("Filling Second Set ...");
             try {
-                fillSets(this.secondList);
+                fillSets(this.SECOND_LIST);
             } catch (InvalidInputException e) {
                 i--;
                 System.out.println("Wrong input format.");
@@ -46,7 +46,7 @@ public class TreeSetImpl {
 
     private void fillSets(TreeSet<String> set) {
         System.out.println("Enter a letter: ");
-        String letter = input.nextLine();
+        String letter = INPUT.nextLine();
         if (Validation.inputLetterValidation(letter)) {
             set.add(letter);
         } else {
@@ -55,22 +55,22 @@ public class TreeSetImpl {
     }
 
     public TreeSet<String> getFirstList() {
-        return firstList;
+        return FIRST_LIST;
     }
 
     public TreeSet<String> getSecondList() {
-        return secondList;
+        return SECOND_LIST;
     }
 
     public TreeSet<String> getUnionSet() {
-        this.unionSet.addAll(firstList);
-        this.unionSet.addAll(secondList);
-        return  this.unionSet;
+        this.UNION_SET.addAll(FIRST_LIST);
+        this.UNION_SET.addAll(SECOND_LIST);
+        return  this.UNION_SET;
     }
 
     public TreeSet<String> getIntersectionSet() {
-        this.intersectionSet.addAll(firstList);
-        this.intersectionSet.retainAll(secondList);
-        return intersectionSet;
+        this.INTERSECTION_SET.addAll(FIRST_LIST);
+        this.INTERSECTION_SET.retainAll(SECOND_LIST);
+        return INTERSECTION_SET;
     }
 }

@@ -18,6 +18,8 @@ public class HashMapKey {
             try {
                 System.out.print("Enter the Key: ");
                 this.key = input.nextLine();
+                if (this.key.length() <= 1)
+                    throw new IndexOutOfBoundsException();
                 validKeySet = true;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Set a valid key first.");
@@ -25,40 +27,27 @@ public class HashMapKey {
         }
     }
 
-    public String getKey() {
-        return key;
-    }
 
     public void setValues() {
-        boolean validKeySet = false;
-        while (!validKeySet) {
-            try {
-                this.values = Permutation.permutation(key);
-                validKeySet = true;
-            } catch (NullPointerException | IndexOutOfBoundsException e) {
-                System.out.println("Set a valid key first.");
-                setKey();
-            }
+        try {
+            if (this.key == null)
+                throw new NullPointerException();
+            this.values = Permutation.permutation(key);
+        } catch (NullPointerException e) {
+            System.out.println("You have no keys to have its value(s).");
         }
     }
 
-    public List<String> getValues() {
-        return this.values;
-    }
 
     public void setHashMap() {
-        boolean validKeySet = false;
-        while (!validKeySet) {
-            try {
-                this.hashMap = new HashMap<>();
-                hashMap.put(this.key, this.values);
-                validKeySet = true;
-            } catch (IndexOutOfBoundsException | NullPointerException e) {
-                System.out.println("Set a valid key first.");
-                setKey();
-            }
+        try {
+            if (this.key == null)
+                throw new NullPointerException();
+            this.hashMap = new HashMap<>();
+            hashMap.put(this.key, this.values);
+        } catch (NullPointerException e) {
+            System.out.println("You have no keys to have its HashMap.");
         }
-
     }
 
     public Map<String, List<String>> getHashMap() {

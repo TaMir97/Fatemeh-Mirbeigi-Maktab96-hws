@@ -10,9 +10,7 @@ public class Permutation {
         List<String> result = new ArrayList<>();
         int count = 1;
         int wordLength = word.length();
-        if (wordLength <= 1){
-            throw new IndexOutOfBoundsException();
-        }
+
         while (count < factorial(wordLength) + 1) {
             char[] eachChar = word.toCharArray();
 

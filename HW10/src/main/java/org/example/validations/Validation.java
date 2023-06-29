@@ -1,12 +1,12 @@
 package org.example.validations;
 
 public class Validation {
-    public static boolean inputLetterValidation(String password) {
+    public static boolean inputLetterValidation(String letter) {
         String regex = "^[a-z]$";
-        return password.matches(regex);
+        return letter.matches(regex);
     }
-    public static boolean inputIntegerValidation(String password) {
+    public static boolean inputIntegerValidation(String integer) {
         String regex = "^[0-9]+$";
-        return password.matches(regex);
+        return integer.matches(regex);
     }
 }

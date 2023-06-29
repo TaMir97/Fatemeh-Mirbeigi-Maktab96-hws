@@ -65,7 +65,7 @@ public class App {
 
                         hashMap.printValues();
 
-                        System.out.println("Is map empty? " + hashMap.isEmpty());
+                        System.out.println("empty? " + hashMap.isEmpty());
 
                         List<Integer> numbers = hashMap.get("numbers");
                         System.out.println("Values for 'numbers': " + numbers);

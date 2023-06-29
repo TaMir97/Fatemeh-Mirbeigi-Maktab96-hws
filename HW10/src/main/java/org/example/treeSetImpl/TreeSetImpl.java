@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 public class TreeSetImpl {
-    private final Scanner INPUT;
+    private final Scanner input;
     private final TreeSet<String> FIRST_LIST;
     private final TreeSet<String> SECOND_LIST;
     private final TreeSet<String> UNION_SET;
@@ -15,7 +15,7 @@ public class TreeSetImpl {
     private static final int INPUT_ELEMENTS = 10;
 
     public TreeSetImpl() {
-        this.INPUT = new Scanner(System.in);
+        this.input = new Scanner(System.in);
         this.FIRST_LIST = new TreeSet<>();
         this.SECOND_LIST = new TreeSet<>();
         this.UNION_SET = new TreeSet<>();
@@ -46,12 +46,12 @@ public class TreeSetImpl {
 
     private void fillSets(TreeSet<String> set) {
         System.out.println("Enter a letter: ");
-        String letter = INPUT.nextLine();
+        String letter = input.nextLine();
         if (Validation.inputLetterValidation(letter)) {
             set.add(letter);
-        } else {
-            throw new InvalidInputException();
+            return;
         }
+        throw new InvalidInputException();
     }
 
     public TreeSet<String> getFirstList() {
@@ -65,7 +65,7 @@ public class TreeSetImpl {
     public TreeSet<String> getUnionSet() {
         this.UNION_SET.addAll(FIRST_LIST);
         this.UNION_SET.addAll(SECOND_LIST);
-        return  this.UNION_SET;
+        return this.UNION_SET;
     }
 
     public TreeSet<String> getIntersectionSet() {

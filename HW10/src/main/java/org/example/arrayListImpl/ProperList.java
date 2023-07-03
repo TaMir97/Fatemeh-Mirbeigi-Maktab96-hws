@@ -22,6 +22,7 @@ public class ProperList {
     public ArrayList<Integer> getProperList() {
         if (initialSize % 2 != 0) {
             improperList.remove(initialSize - 1);
+            initialSize --;
         }
         for (int i = 0; i < initialSize; i = i + 2) {
             if (improperList.get(i) >= improperList.get(i + 1)) {

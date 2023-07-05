@@ -6,8 +6,9 @@ import java.util.List;
 public class MainList {
     private List<Integer> mainList;
     private int lastElement;
-    private boolean flag = true;
-
+    private boolean evenFlag = true;
+    private boolean oddFlag = false;
+    private boolean finished = false;
 
     public MainList(int lastElement) {
         mainList = new ArrayList<>();
@@ -15,29 +16,35 @@ public class MainList {
     }
 
     public synchronized void fillWithEven(int evenElement) throws InterruptedException {
-        while (flag) {
+        while (!evenFlag || finished) {
             wait();
         }
-        flag = false;
         mainList.add(evenElement);
+        evenFlag = false;
+        oddFlag = true;
         notifyAll();
     }
 
     public synchronized void fillWithOdd(int oddElement) throws InterruptedException {
-        while (!flag) {
+        while (!oddFlag || finished) {
             wait();
         }
-        flag = true;
         mainList.add(oddElement);
+        oddFlag = false;
+        evenFlag = true;
+
+        if (mainList.size() == lastElement + 1) {
+            finished = true;
+        }
+
         notifyAll();
     }
 
     public void removeUnnecessary(int element) {
-        while (mainList.size() != lastElement + 1){
+        while (!finished) {
             try {
                 wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            } catch (InterruptedException ignored) {
             }
         }
         mainList.remove(element);

@@ -2,7 +2,7 @@ package waitNotifyImpl;
 
 public class Main {
     public static void main(String[] args) {
-        MainList mainList = new MainList(10);
+        MainList mainList = new MainList(11);
         EvenThread even = new EvenThread(mainList);
         Thread evenAdd = new Thread(even);
         OddThread odd = new OddThread(mainList);
@@ -11,11 +11,16 @@ public class Main {
         evenAdd.start();
         oddAdd.start();
 
+//        try {
+//            evenAdd.join();
+//            oddAdd.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         try {
-            evenAdd.join();
-            oddAdd.join();
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         System.out.println("The main list: " + mainList.getMainList());

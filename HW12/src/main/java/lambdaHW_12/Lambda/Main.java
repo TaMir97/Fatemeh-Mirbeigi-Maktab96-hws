@@ -1,4 +1,4 @@
-package org.example.LambdaHW_12.Lambda;
+package lambdaHW_12.Lambda;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

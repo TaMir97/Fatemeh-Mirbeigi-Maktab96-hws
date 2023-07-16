@@ -12,8 +12,7 @@ public class LambdaUtil {
      * @return a string supplier
      */
     public static Supplier<String> helloSupplier() {
-        //todo
-        return null;
+        return () -> "Hello";
     }
 
     /**
@@ -22,8 +21,7 @@ public class LambdaUtil {
      * @return a string predicate
      */
     public static Predicate<String> isEmptyPredicate() {
-        //todo
-        return null;
+        return String::isEmpty;
     }
 
     /**
@@ -33,8 +31,13 @@ public class LambdaUtil {
      * @return function that repeats Strings
      */
     public static BiFunction<String, Integer, String> stringMultiplier() {
-        //todo
-        return null;
+        return (str, n) -> {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < n; i++) {
+                result.append(str);
+            }
+            return result.toString();
+        };
     }
 
     /**
@@ -44,8 +47,7 @@ public class LambdaUtil {
      * @return function that converts adds dollar sign
      */
     public static Function<BigDecimal, String> toDollarStringFunction() {
-        //todo
-        return null;
+        return num -> "$" + num.toString();
     }
 
     /**
@@ -57,8 +59,7 @@ public class LambdaUtil {
      * @return a string predicate
      */
     public static Predicate<String> lengthInRangePredicate(int min, int max) {
-        //todo
-        return null;
+        return str -> str.length() >= min && str.length() < max;
     }
 
     /**
@@ -67,8 +68,7 @@ public class LambdaUtil {
      * @return int supplier
      */
     public static IntSupplier randomIntSupplier() {
-        //todo
-        return null;
+        return () -> (int) (Math.random() * Integer.MAX_VALUE);
     }
 
 
@@ -78,8 +78,7 @@ public class LambdaUtil {
      * @return int operation
      */
     public static IntUnaryOperator boundedRandomIntSupplier() {
-        //todo
-        return null;
+        return bound -> (int) (Math.random() * bound);
     }
 
     /**
@@ -88,8 +87,7 @@ public class LambdaUtil {
      * @return square operation
      */
     public static IntUnaryOperator intSquareOperation() {
-        //todo
-        return null;
+        return num -> num * num;
     }
 
     /**
@@ -98,8 +96,7 @@ public class LambdaUtil {
      * @return binary sum operation
      */
     public static LongBinaryOperator longSumOperation() {
-        //todo
-        return null;
+        return Long::sum;
     }
 
     /**
@@ -108,8 +105,7 @@ public class LambdaUtil {
      * @return string to int converter
      */
     public static ToIntFunction<String> stringToIntConverter() {
-        //todo
-        return null;
+        return Integer::parseInt;
     }
 
     /**
@@ -120,8 +116,7 @@ public class LambdaUtil {
      * @return a function supplier
      */
     public static Supplier<IntUnaryOperator> nMultiplyFunctionSupplier(int n) {
-        //todo
-        return null;
+        return () -> num -> n * num;
     }
 
     /**
@@ -130,8 +125,7 @@ public class LambdaUtil {
      * @return a supplier instance
      */
     public static Supplier<Supplier<Supplier<String>>> trickyWellDoneSupplier() {
-        //todo
-        return null;
+        return () -> () -> () -> "WELL DONE";
     }
 
     /**
@@ -140,8 +134,7 @@ public class LambdaUtil {
      * @return function that composes functions with trim() function
      */
     public static UnaryOperator<Function<String, String>> composeWithTrimFunction() {
-        //todo
-        return null;
+        return func -> func.andThen(String::trim);
     }
 
     /**
@@ -154,8 +147,7 @@ public class LambdaUtil {
      * @return a binary function that receiver predicate and function and compose them to create a new function
      */
     public static BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> functionToConditionalFunction() {
-        //todo :: extra points
-        return null;
+        return (function, predicate) -> num -> predicate.test(num) ? function.applyAsInt(num) : num;
     }
 
     /**
@@ -166,7 +158,6 @@ public class LambdaUtil {
      * @return a high-order function that fetches a function from a function map by a given name or returns identity()
      */
     public static BiFunction<Map<String, IntUnaryOperator>, String, IntUnaryOperator> functionLoader() {
-        //todo :: extra points
-        return null;
+        return (functionMap, functionName) -> functionMap.getOrDefault(functionName, IntUnaryOperator.identity());
     }
 }

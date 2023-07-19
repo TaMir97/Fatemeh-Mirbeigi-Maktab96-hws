@@ -68,7 +68,7 @@ public class LambdaUtil {
      * @return int supplier
      */
     public static IntSupplier randomIntSupplier() {
-        return () -> (int) (Math.random() * Integer.MAX_VALUE);
+        return () -> (int) (Math.random() * 10);
     }
 
 

@@ -2,9 +2,11 @@ package ir.maktab.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class Person {
 
     private Integer id;
@@ -20,22 +22,4 @@ public class Person {
     private String ipv4;
     private String ipv6;
 
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", username='" + username + '\'' +
-                ", favoriteColor='" + favoriteColor + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", ipv4='" + ipv4 + '\'' +
-                ", ipv6='" + ipv6 + '\'' +
-                '}';
-    }
 }

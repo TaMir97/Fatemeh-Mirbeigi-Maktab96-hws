@@ -3,7 +3,11 @@ package ir.maktab;
 
 import ir.maktab.mockdata.MockData;
 import ir.maktab.model.Person;
+import ir.maktab.model.PersonSummary;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -42,19 +46,27 @@ public class Main {
 //        .toList();
 //    ipv4.forEach(System.out::println);
 
-    //Q5
-    Map<String, Person> personMap = people.stream()
-        .sorted(Comparator.comparing(Person::getLastName))
-        .filter(person -> person.getGender().equalsIgnoreCase("Female") && person.getAge() > 40)
-        .dropWhile(person -> person.getFirstName().toLowerCase().startsWith("a"))
-        .skip(5)
-        .limit(100)
-        .collect(Collectors.toMap(
-            person -> person.getFirstName() + " " + person.getLastName(),
-            person -> person
-        ));
-    personMap.values().forEach(System.out::println);
+    //Q5 (temporary)
+//    Map<String, Person> personMap = people.stream()
+//        .sorted(Comparator.comparing(Person::getLastName))
+//        .filter(person -> person.getGender().equalsIgnoreCase("Female") && person.getAge() > 40)
+//        .dropWhile(person -> person.getFirstName().toLowerCase().startsWith("a"))
+//        .skip(5)
+//        .limit(100)
+//        .collect(Collectors.toMap(
+//            person -> person.getFirstName() + " " + person.getLastName(),
+//            person -> person
+//        ));
+//    personMap.values().forEach(System.out::println);
 
+    //Q6
+    double maleAverageAge = people.stream()
+        .filter(person -> person.getGender().equalsIgnoreCase("Male"))
+        .map(PersonSummary::map)
+        .mapToInt(PersonSummary::getAge)
+        .average()
+        .orElse(0);
+    System.out.println(maleAverageAge);
 
 
 

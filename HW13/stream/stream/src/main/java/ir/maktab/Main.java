@@ -15,25 +15,31 @@ public class Main {
     assert people != null;
 
     //Q1
-    List<Person> youngPeople = people.stream()
-        .filter(person -> person.getAge() < 50)
-        .toList();
-    youngPeople.forEach(System.out::println);
+//    List<Person> youngPeople = people.stream()
+//        .filter(person -> person.getAge() < 50)
+//        .toList();
+//    youngPeople.forEach(System.out::println);
 
     //Q2
-    List<Person> sortedByUsername = people.stream()
-        .sorted(Comparator.comparing(Person::getUsername))
-        .toList();
-    sortedByUsername.forEach(System.out::println);
+//    List<Person> sortedByUsername = people.stream()
+//        .sorted(Comparator.comparing(Person::getUsername))
+//        .toList();
+//    sortedByUsername.forEach(System.out::println);
 
     //Q3
-
+    Comparator<Person> comparedByAgeThenLastName = Comparator
+        .comparing(Person::getAge)
+        .thenComparing(Person::getLastName);
+    List<Person> sortedByAgeThenLastName = people.stream()
+        .sorted(comparedByAgeThenLastName)
+        .toList();
+    sortedByAgeThenLastName.forEach(System.out::println);
 
     //Q4
-    List<String> ipv4 = people.stream()
-        .map(Person::getIpv4)
-        .toList();
-    ipv4.forEach(System.out::println);
+//    List<String> ipv4 = people.stream()
+//        .map(Person::getIpv4)
+//        .toList();
+//    ipv4.forEach(System.out::println);
 
   }
 }

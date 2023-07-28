@@ -4,8 +4,10 @@ package ir.maktab;
 import ir.maktab.mockdata.MockData;
 import ir.maktab.model.Person;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
   public static void main(String[] args) {
@@ -18,6 +20,13 @@ public class Main {
         .toList();
     youngPeople.forEach(System.out::println);
 
+    //Q2
+    List<Person> sortedByUsername = people.stream()
+        .sorted(Comparator.comparing(Person::getUsername))
+        .toList();
+    sortedByUsername.forEach(System.out::println);
+
+    //Q3
 
 
     //Q4

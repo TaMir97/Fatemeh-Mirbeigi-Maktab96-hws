@@ -23,14 +23,15 @@ public class PersonSummary {
   public static PersonSummary map(Person person) {
 
     try {
+
       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
       Date birthDate = sdf.parse(person.getBirthDate());
       int yearOfBirth = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
       int currentYear = Year.now().getValue();
 
-
       return new PersonSummary(person.getId(), person.getFirstName(), person.getLastName(),
           currentYear - yearOfBirth, birthDate);
+
     } catch (Exception e) {
       e.printStackTrace();
       return null;

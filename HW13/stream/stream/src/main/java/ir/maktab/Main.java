@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -47,27 +48,37 @@ public class Main {
 //    ipv4.forEach(System.out::println);
 
     //Q5 (temporary)
-//    Map<String, Person> personMap = people.stream()
-//        .sorted(Comparator.comparing(Person::getLastName))
-//        .filter(person -> person.getGender().equalsIgnoreCase("Female") && person.getAge() > 40)
-//        .dropWhile(person -> person.getFirstName().toLowerCase().startsWith("a"))
-//        .skip(5)
-//        .limit(100)
-//        .collect(Collectors.toMap(
-//            person -> person.getFirstName() + " " + person.getLastName(),
-//            person -> person
-//        ));
-//    personMap.values().forEach(System.out::println);
+    Comparator<Person> customComparator = Comparator
+        .comparing(Person::getLastName)
+        .thenComparing(Person::getFirstName);
+
+    Map<String, Person> personMap = new HashMap<>();
+    people.stream()
+        .filter(person -> person.getGender().equalsIgnoreCase("Female") && person.getAge() > 40)
+        .sorted(customComparator)
+        .dropWhile(person -> person.getFirstName().toLowerCase().startsWith("a"))
+        .skip(5)
+        .limit(100)
+        .forEach(person -> {
+          String key = person.getFirstName() + " " + person.getLastName();
+          int counter = 1;
+          while (personMap.containsKey(key)) {
+            key = person.getFirstName() + " " + person.getLastName() + " " + counter;
+            counter++;
+          }
+          personMap.put(key, person);
+        });
+    personMap.values().forEach(System.out::println);
+    System.out.println(personMap.keySet());
 
     //Q6
-    double maleAverageAge = people.stream()
-        .filter(person -> person.getGender().equalsIgnoreCase("Male"))
-        .map(PersonSummary::map)
-        .mapToInt(PersonSummary::getAge)
-        .average()
-        .orElse(0);
-    System.out.println(maleAverageAge);
-
+//    double maleAverageAge = people.stream()
+//        .filter(person -> person.getGender().equalsIgnoreCase("Male"))
+//        .map(PersonSummary::map)
+//        .mapToInt(PersonSummary::getAge)
+//        .average()
+//        .orElse(0);
+//    System.out.println(maleAverageAge);
 
 
   }

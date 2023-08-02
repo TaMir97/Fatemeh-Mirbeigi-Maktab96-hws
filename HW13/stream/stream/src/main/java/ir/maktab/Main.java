@@ -69,7 +69,7 @@ public class Main {
           personMap.put(key, person);
         });
     personMap.values().forEach(System.out::println);
-    System.out.println(personMap.keySet());
+    personMap.keySet().forEach(System.out::println);
 
     //Q6
 //    double maleAverageAge = people.stream()

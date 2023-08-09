@@ -2,14 +2,19 @@ package ir.maktab.domain;
 
 import ir.maktab.base.domain.Person;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.MapKeyClass;
 import javax.persistence.PrimaryKeyJoinColumn;
 import java.util.Date;
 
 @Entity
 public class Student extends Person {
+    @Column(name = "student_number")
     private Long studentNo;
+    @Column(name = "study_field")
     private String studyField;
+    @Column(name = "started_year")
     private String startedYear;
 
     public Student(Long personId, String firstname, String lastname, Date birthdate, Long studentNo, String studyField, String startedYear) {

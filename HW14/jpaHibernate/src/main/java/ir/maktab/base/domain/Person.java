@@ -1,9 +1,6 @@
 package ir.maktab.base.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 import java.util.Date;
 
 
@@ -11,6 +8,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long personId;
     private String firstname;
     private String lastname;

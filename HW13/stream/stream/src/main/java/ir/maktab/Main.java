@@ -52,22 +52,32 @@ public class Main {
         .comparing(Person::getLastName)
         .thenComparing(Person::getFirstName);
 
-    Map<String, Person> personMap = new HashMap<>();
+    Map<String, Person> personMap =
     people.stream()
         .filter(person -> person.getGender().equalsIgnoreCase("Female") && person.getAge() > 40)
         .sorted(customComparator)
         .dropWhile(person -> person.getFirstName().toLowerCase().startsWith("a"))
         .skip(5)
         .limit(100)
-        .forEach(person -> {
+        .parallel()
+        .collect(HashMap::new, (map, person) -> {
           String key = person.getFirstName() + " " + person.getLastName();
           int counter = 1;
-          while (personMap.containsKey(key)) {
+          while (map.containsKey(key)) {
             key = person.getFirstName() + " " + person.getLastName() + " " + counter;
             counter++;
           }
-          personMap.put(key, person);
-        });
+          map.put(key, person);
+        }, HashMap::putAll);
+//        .forEach(person -> {
+//          String key = person.getFirstName() + " " + person.getLastName();
+//          int counter = 1;
+//          while (personMap.containsKey(key)) {
+//            key = person.getFirstName() + " " + person.getLastName() + " " + counter;
+//            counter++;
+//          }
+//          personMap.put(key, person);
+//        });
     personMap.values().forEach(System.out::println);
     personMap.keySet().forEach(System.out::println);
 

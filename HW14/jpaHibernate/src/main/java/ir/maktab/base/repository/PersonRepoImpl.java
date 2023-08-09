@@ -8,53 +8,45 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class PersonRepoImpl<T extends Person> implements PersonRepo<T> {
+public class PersonRepoImpl implements PersonRepo {
     EntityManager entityManager = HibernateUtil.getEntityManager();
 
     @Override
-    public T saveOrUpdate(T entity) {
-        beginTransaction();
-        entity = saveWithoutTransaction(entity);
-        commitTransaction();
-        entityManager.clear();
-        return entity;
+    public Person save(Person person) {
+        entityManager.persist(person);
+        return person;
     }
 
-    public T saveWithoutTransaction(T entity) {
-        if (entity.getPersonId() == null)
-            entityManager.persist(entity);
-        else
-            entity = entityManager.merge(entity);
-
-        return entity;
+    @Override
+    public void update(Person person) {
+        entityManager.merge(person);
     }
-
 
     @Override
     public void deleteById(Long id) {
+        Person person = entityManager.find(Person.class, id);
+        entityManager.remove(person);
+    }
+
+    @Override
+    public Collection<Person> loadAll() {
+        return entityManager.createQuery("from " + Person.class.getSimpleName(),
+                Person.class).getResultList();
+    }
+
+
+    @Override
+    public Collection<Person> saveAll(Collection<Person> people) {
         beginTransaction();
-        entityManager.remove(id);
+        List<Person> savedPeople = new ArrayList<>();
+        people.forEach(e -> savedPeople.add(save(e)));
         commitTransaction();
+        return savedPeople;
     }
 
     @Override
-    public Collection<T> loadAll() {
-        return entityManager.createQuery("from "+ getEntityClass().getSimpleName(),getEntityClass()).getResultList();
-    }
-
-
-    @Override
-    public Collection<T> saveAll(Collection<T> entityCollection) {
-        beginTransaction();
-        List<T> savedEntity=new ArrayList<>();
-        entityCollection.forEach(e->savedEntity.add(saveWithoutTransaction(e)));
-        commitTransaction();
-        return savedEntity;
-    }
-
-    @Override
-    public boolean contains(T entity) {
-        return entityManager.find(getEntityClass(), entity) != null;
+    public boolean contains(Person person) {
+        return entityManager.find(Person.class, person) != null;
     }
 
     @Override
@@ -76,5 +68,4 @@ public abstract class PersonRepoImpl<T extends Person> implements PersonRepo<T> 
             entityManager.getTransaction().rollback();
     }
 
-    public abstract Class<T> getEntityClass();
 }

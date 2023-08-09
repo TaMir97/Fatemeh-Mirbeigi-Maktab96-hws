@@ -3,19 +3,20 @@ package ir.maktab.base.repository;
 import ir.maktab.base.domain.Person;
 
 import java.util.Collection;
-import java.util.Optional;
 
-public interface PersonRepo<T extends Person> {
-    T saveOrUpdate(T entity);
+public interface PersonRepo {
+    Person save(Person person);
+
+    void update(Person person);
 
     void deleteById(Long id);
 
-    Collection<T> loadAll();
+    Collection<Person> loadAll();
 
-    boolean contains(T entity);
+    boolean contains(Person person);
 
 
-    Collection<T> saveAll(Collection<T> persons);
+    Collection<Person> saveAll(Collection<Person> persons);
 
     void beginTransaction();
 

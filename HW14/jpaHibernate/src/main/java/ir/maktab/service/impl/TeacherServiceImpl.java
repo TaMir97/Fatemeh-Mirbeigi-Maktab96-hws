@@ -18,7 +18,7 @@ public class TeacherServiceImpl extends PersonServiceImpl<Teacher>{
 
 
     public Teacher signUpTeacher(String firstname, String lastname,
-                                 Long teacherNo, Degree degree, AcademicRank academicRank,
+                                 Long teacherNo, String degree, String academicRank,
                                  BigDecimal payment) {
         Teacher teacher = new Teacher();
         teacher.setFirstname(firstname);

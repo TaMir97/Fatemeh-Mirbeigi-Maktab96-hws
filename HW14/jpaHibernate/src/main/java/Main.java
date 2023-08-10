@@ -25,7 +25,7 @@ public class Main {
 
         TeacherServiceImpl teacherService = new TeacherServiceImpl();
         System.out.println(teacherService.signUpTeacher("Zaa", "asd",
-                456L, Degree.ASSOCIATE, AcademicRank.ASSOCIATE_PROFESSOR,
+                456L, Degree.ASSOCIATE.toString(), AcademicRank.ASSOCIATE_PROFESSOR.toString(),
                 BigDecimal.valueOf(1500)));
 
     }

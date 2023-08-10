@@ -13,13 +13,13 @@ import java.util.Date;
 public class Teacher extends Person {
     @Column(name = "teacher_number")
     private Long teacherNo;
-    private Degree degree;
+    private String degree;
     @Column(name = "academic_rank")
-    private AcademicRank academicRank;
+    private String academicRank;
     private BigDecimal payment;
 
 
-    public Teacher(Long personId, String firstname, String lastname, Date birthdate, Long teacherNo, Degree degree, AcademicRank academicRank, BigDecimal payment) {
+    public Teacher(Long personId, String firstname, String lastname, Date birthdate, Long teacherNo, String degree, String academicRank, BigDecimal payment) {
         super(personId, firstname, lastname, birthdate);
         this.teacherNo = teacherNo;
         this.degree = degree;
@@ -38,19 +38,19 @@ public class Teacher extends Person {
         this.teacherNo = teacherNo;
     }
 
-    public Degree getDegree() {
+    public String getDegree() {
         return degree;
     }
 
-    public void setDegree(Degree degree) {
+    public void setDegree(String degree) {
         this.degree = degree;
     }
 
-    public AcademicRank getAcademicRank() {
+    public String getAcademicRank() {
         return academicRank;
     }
 
-    public void setAcademicRank(AcademicRank academicRank) {
+    public void setAcademicRank(String academicRank) {
         this.academicRank = academicRank;
     }
 

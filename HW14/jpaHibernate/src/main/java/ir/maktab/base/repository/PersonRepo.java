@@ -1,27 +1,28 @@
 package ir.maktab.base.repository;
 
 import ir.maktab.base.domain.Person;
+import ir.maktab.domain.Student;
 
+import javax.persistence.EntityManager;
 import java.util.Collection;
 
-public interface PersonRepo {
-    Person save(Person person);
+public interface PersonRepo<T extends Person> {
+    T save(T person);
 
-    void update(Person person);
+    void update(T person);
 
     void deleteById(Long id);
 
-    Collection<Person> loadAll();
+    Collection<T> loadAll(Class<T> clazz);
 
-    boolean contains(Person person);
+    boolean contains(T person);
 
-
-    Collection<Person> saveAll(Collection<Person> persons);
 
     void beginTransaction();
 
     void commitTransaction();
 
     void rollBack();
+    EntityManager getEntityManager();
 
 }

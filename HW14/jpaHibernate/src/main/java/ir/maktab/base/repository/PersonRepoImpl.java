@@ -4,21 +4,23 @@ import ir.maktab.base.domain.Person;
 import ir.maktab.util.HibernateUtil;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-public class PersonRepoImpl implements PersonRepo {
-    EntityManager entityManager = HibernateUtil.getEntityManager();
+public class PersonRepoImpl<T extends Person> implements PersonRepo<T> {
+    private final EntityManager entityManager;
+
+    public PersonRepoImpl(EntityManager em) {
+        entityManager = em;
+    }
 
     @Override
-    public Person save(Person person) {
+    public T save(T person) {
         entityManager.persist(person);
         return person;
     }
 
     @Override
-    public void update(Person person) {
+    public void update(T person) {
         entityManager.merge(person);
     }
 
@@ -29,23 +31,15 @@ public class PersonRepoImpl implements PersonRepo {
     }
 
     @Override
-    public Collection<Person> loadAll() {
-        return entityManager.createQuery("from " + Person.class.getSimpleName(),
-                Person.class).getResultList();
+    public Collection<T> loadAll(Class<T> clazz) {
+        return entityManager.createQuery("from " + clazz.getSimpleName(), clazz)
+                .getResultList();
+
     }
 
 
     @Override
-    public Collection<Person> saveAll(Collection<Person> people) {
-        beginTransaction();
-        List<Person> savedPeople = new ArrayList<>();
-        people.forEach(e -> savedPeople.add(save(e)));
-        commitTransaction();
-        return savedPeople;
-    }
-
-    @Override
-    public boolean contains(Person person) {
+    public boolean contains(T person) {
         return entityManager.find(Person.class, person) != null;
     }
 
@@ -66,6 +60,11 @@ public class PersonRepoImpl implements PersonRepo {
     public void rollBack() {
         if (entityManager.getTransaction().isActive())
             entityManager.getTransaction().rollback();
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

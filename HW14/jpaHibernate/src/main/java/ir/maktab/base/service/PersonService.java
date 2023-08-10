@@ -4,19 +4,17 @@ import ir.maktab.base.domain.Person;
 
 import java.util.Collection;
 
-public interface PersonService {
-    Person singUp(String firstname, String lastname);
+public interface PersonService<T extends Person> {
+    T singUp(String firstname, String lastname);
 
-    void update(Person person);
+    void update(T person);
 
     void deleteById(Long id);
 
-    Collection<Person> loadAll();
+    Collection<T> loadAll(Class<T> clazz);
 
-    boolean contains(Person person);
+    boolean contains(T person);
 
-
-    Collection<Person> saveAll(Collection<Person> people);
 
     void beginTransaction();
 

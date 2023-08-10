@@ -2,16 +2,18 @@ package ir.maktab.base.service;
 
 import ir.maktab.base.domain.Person;
 import ir.maktab.base.repository.PersonRepo;
+import ir.maktab.base.repository.PersonRepoImpl;
+import ir.maktab.util.HibernateUtil;
 
+import javax.persistence.EntityManager;
+import java.io.Serializable;
 import java.util.Collection;
 
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl<T extends Person> implements PersonService<Person> {
 
-    private final PersonRepo repository;
+    private final EntityManager entityManager = HibernateUtil.getEntityManager();
 
-    public PersonServiceImpl(PersonRepo repository) {
-        this.repository = repository;
-    }
+    private final PersonRepo<Person> repository = new PersonRepoImpl<>(entityManager);
 
 
     @Override
@@ -35,22 +37,19 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void deleteById(Long id) {
+        beginTransaction();
         repository.deleteById(id);
+        commitTransaction();
     }
 
     @Override
-    public Collection<Person> loadAll() {
-        return repository.loadAll();
+    public Collection<Person> loadAll(Class<Person> clazz){
+        return repository.loadAll(clazz);
     }
 
     @Override
     public boolean contains(Person person) {
         return repository.contains(person);
-    }
-
-    @Override
-    public Collection<Person> saveAll(Collection<Person> people) {
-        return repository.saveAll(people);
     }
 
     @Override

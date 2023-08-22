@@ -11,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 @MappedSuperclass
 public class BaseEntity<ID extends Serializable> implements Serializable {
     @Id

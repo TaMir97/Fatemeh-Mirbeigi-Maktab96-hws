@@ -17,4 +17,7 @@ public class BaseEntity<ID extends Serializable> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected ID id;
+
+    public BaseEntity() {
+    }
 }

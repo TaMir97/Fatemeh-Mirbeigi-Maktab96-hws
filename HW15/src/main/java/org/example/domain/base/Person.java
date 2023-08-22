@@ -21,12 +21,12 @@ public class Person extends BaseEntity<Long>{
 
     @NotBlank(message = "First name is required")
     @Size(max = 100, message = "First name must not exceed 100 characters")
-    @Pattern(regexp="^[A-Z][a-zA-Z]* [A-Z][a-zA-Z]*$")
+    @Pattern(regexp="^[a-zA-Z]+$", message = "FirstName must consist of letters only")
     private String firstname;
 
     @NotBlank(message = "First name is required")
     @Size(max = 100, message = "First name must not exceed 100 characters")
-    @Pattern(regexp="^[A-Z][a-zA-Z]* [A-Z][a-zA-Z]*$")
+    @Pattern(regexp="^[a-zA-Z]*$", message = "LastName must consist of letters only")
     private String lastname;
 
     @NotBlank(message = "Username is required")
@@ -36,7 +36,7 @@ public class Person extends BaseEntity<Long>{
 
     @NotBlank(message = "Username is required")
     @Size(min = 6, max = 20, message = "Username must be between 6 and 20 characters")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Username must consist of letters and numbers only")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Password must consist of letters and numbers only")
     private String password;
 
     @Email(message = "Email should be valid")

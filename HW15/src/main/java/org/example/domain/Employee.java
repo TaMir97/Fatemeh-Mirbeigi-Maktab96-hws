@@ -1,26 +1,39 @@
 package org.example.domain;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.example.domain.base.Person;
+import org.example.base.domain.BaseEntity;
+import org.example.domain.base.PersonId;
 import org.example.domain.enums.Role;
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 
 @Getter
 @Setter
 @ToString
-public class Employee extends Person {
+@Entity
+public class Employee extends BaseEntity<Long> {
+    @EmbeddedId
+    private PersonId id;
+
     @Min(10_000_000)
     private Long salary;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public Employee() {
     }
 
-    public Employee(String firstname, String lastname, String username, String password, String email, Role role, Long salary) {
-        super(firstname, lastname, username, password, email, role);
+    public Employee(PersonId id, Long salary, Role role) {
+        this.id = id;
         this.salary = salary;
+        this.role = role;
     }
 }

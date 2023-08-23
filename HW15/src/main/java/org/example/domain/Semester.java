@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import java.time.Year;
 
-
 @Entity
 public class Semester extends BaseEntity<Long> {
 

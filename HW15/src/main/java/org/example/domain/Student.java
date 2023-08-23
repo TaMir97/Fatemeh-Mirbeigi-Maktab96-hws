@@ -48,10 +48,6 @@ public class Student extends BaseEntity<Long> {
         this.studentState = studentState;
     }
 
-    public PersonId getId() {
-        return id;
-    }
-
     public void setId(PersonId id) {
         this.id = id;
     }

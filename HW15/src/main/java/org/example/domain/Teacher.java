@@ -82,10 +82,6 @@ public class Teacher extends BaseEntity<Long> {
         return totalSalary;
     }
 
-    public PersonId getId() {
-        return id;
-    }
-
     public void setId(PersonId id) {
         this.id = id;
     }

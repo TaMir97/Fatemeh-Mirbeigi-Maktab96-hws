@@ -16,7 +16,7 @@ public class Course extends BaseEntity<Long> {
 
     @NotBlank(message = "Course title is required")
     @Size(max = 100, message = "Course title must not exceed 100 characters")
-    @Pattern(regexp="^[a-zA-Z]+$", message = "Course title must consist of letters only")
+    @Pattern(regexp="^[a-zA-Z0-9]+$", message = "Course title must consist of letters and numbers only")
     private String title;
 
     @Min(value = 1, message = "Credits must be at least 1")

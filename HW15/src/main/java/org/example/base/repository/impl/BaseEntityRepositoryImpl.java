@@ -1,6 +1,7 @@
-package org.example.base.repository;
+package org.example.base.repository.impl;
 
 import org.example.base.domain.BaseEntity;
+import org.example.base.repository.BaseEntityRepository;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;

@@ -5,15 +5,13 @@ import lombok.Setter;
 import lombok.ToString;
 import org.example.base.domain.BaseEntity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @ToString
+@Table(name = "released_course")
 public class ReleasedCourse extends BaseEntity<Long> {
 
     @ManyToOne

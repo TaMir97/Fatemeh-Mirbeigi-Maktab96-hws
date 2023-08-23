@@ -1,7 +1,7 @@
 package org.example.domain;
 
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
+
+import javax.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@Table(name = "student_taken_course")
 public class StudentTakenCourse extends BaseEntity<Long> {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "released_course_id")
@@ -24,6 +25,7 @@ public class StudentTakenCourse extends BaseEntity<Long> {
     private Double mark;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "course_state")
     private CourseState courseState;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})

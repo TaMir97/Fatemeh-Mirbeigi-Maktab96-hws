@@ -1,13 +1,14 @@
 package org.example.domain;
 
-import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.base.domain.BaseEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -24,6 +25,7 @@ public class Course extends BaseEntity<Long> {
     private Integer credit;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinColumn(name = "course_department_id")
     private Department courseDepartment;
 
     public Course() {

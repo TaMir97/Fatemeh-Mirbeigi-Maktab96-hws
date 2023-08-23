@@ -1,6 +1,7 @@
 package org.example.domain;
 
-import jakarta.validation.constraints.Min;
+
+import javax.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

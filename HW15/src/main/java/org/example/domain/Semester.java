@@ -1,7 +1,5 @@
 package org.example.domain;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.example.base.domain.BaseEntity;
 import org.example.domain.enums.Season;
 

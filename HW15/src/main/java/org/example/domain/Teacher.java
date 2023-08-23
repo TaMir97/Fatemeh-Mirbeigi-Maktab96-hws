@@ -1,8 +1,5 @@
 package org.example.domain;
 
-import jakarta.validation.constraints.Min;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import org.example.base.domain.BaseEntity;
 import org.example.domain.base.PersonId;
@@ -18,16 +15,21 @@ public class Teacher extends BaseEntity<Long> {
     @EmbeddedId
     private PersonId id;
 
+    @Column(name = "total_credit")
     private Integer totalCredit;
 
+    @Column(name = "base_salary")
     private Long baseSalary;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "teacher_level")
     private TeacherLevel teacherLevel;
 
+    @Column(name = "total_salary")
     private Long totalSalary;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "teacher_department_id")
     private Department teacherDepartment;
 
     @OneToMany(mappedBy = "teacher",

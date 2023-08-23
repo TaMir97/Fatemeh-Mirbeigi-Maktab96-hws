@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="persistence.xml creation">
+    <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="complete the entities">
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/base/domain/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/HibernateUtil.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/ReleasedCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/ReleasedCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Semester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/StudentTakenCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/StudentTakenCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/base/PersonId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/base/PersonId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -36,6 +45,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectId" id="2U0jejqpxtcN0gD7Ntnu5yH3k8J" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,17 +53,313 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "master"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last.edited.regexp": "",
+    "last_opened_file_path": "C:/Users/User/Documents/Java/HWs/HW14/jpaHibernate",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Facets",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.App" />
+      <module name="HW15" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="adding lombok dependency">
+      <created>1692048288804</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1692048288804</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Creating BaseEntity as the root of the generics">
+      <created>1692048409138</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692048409138</updated>
+    </task>
+    <task id="LOCAL-00003" summary="defining the necessary methods in the root">
+      <created>1692050679727</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692050679727</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="defining the necessary methods in the root" />
+      <created>1692083489227</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692083489227</updated>
+      <workItem from="1692083492544" duration="5827000" />
+      <workItem from="1692365486847" duration="6038000" />
+      <workItem from="1692477120774" duration="693000" />
+      <workItem from="1692531330043" duration="1792000" />
+      <workItem from="1692560167450" duration="2677000" />
+      <workItem from="1692635912092" duration="6308000" />
+      <workItem from="1692680324725" duration="28359000" />
+      <workItem from="1692773551246" duration="4195000" />
+    </task>
+    <task id="LOCAL-00004" summary="Person Entity">
+      <created>1692685992777</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692685992777</updated>
+    </task>
+    <task id="LOCAL-00005" summary="adding validation dependency">
+      <created>1692686012161</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692686012161</updated>
+    </task>
+    <task id="LOCAL-00006" summary="adding validation property">
+      <created>1692686028230</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692686028230</updated>
+    </task>
+    <task id="LOCAL-00007" summary="some modifications">
+      <created>1692686211543</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692686211543</updated>
+    </task>
+    <task id="LOCAL-00008" summary="some modifications">
+      <created>1692694746767</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692694746767</updated>
+    </task>
+    <task id="LOCAL-00009" summary="creating Employee.java">
+      <created>1692694774825</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1692694774825</updated>
+    </task>
+    <task id="LOCAL-00010" summary="some modifications on salary bounds">
+      <created>1692695641093</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692695641093</updated>
+    </task>
+    <task id="LOCAL-00011" summary="creating Department entity">
+      <created>1692698500618</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1692698500618</updated>
+    </task>
+    <task id="LOCAL-00012" summary="adding no args constructor">
+      <created>1692719484746</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1692719484746</updated>
+    </task>
+    <task id="LOCAL-00013" summary="change the database">
+      <created>1692719515286</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1692719515287</updated>
+    </task>
+    <task id="LOCAL-00014" summary="make a person an abstract class that build each person an id">
+      <created>1692719584069</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1692719584070</updated>
+    </task>
+    <task id="LOCAL-00015" summary="create an employee">
+      <created>1692719608246</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1692719608246</updated>
+    </task>
+    <task id="LOCAL-00016" summary="create th Course.java entity with the required relationships">
+      <created>1692765723086</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1692765723086</updated>
+    </task>
+    <task id="LOCAL-00017" summary="complete the Teacher entity">
+      <created>1692767236723</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1692767236723</updated>
+    </task>
+    <task id="LOCAL-00018" summary="enumerated values for payment">
+      <created>1692767263461</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1692767263461</updated>
+    </task>
+    <task id="LOCAL-00019" summary="a little modification">
+      <created>1692767319288</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1692767319288</updated>
+    </task>
+    <task id="LOCAL-00020" summary="complete the StudentTakenCourse.java">
+      <created>1692768019181</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768019181</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add numbers to the course title regex">
+      <created>1692768173278</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768173278</updated>
+    </task>
+    <task id="LOCAL-00022" summary="complete ReleasedCourse.java">
+      <created>1692768258942</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768258942</updated>
+    </task>
+    <task id="LOCAL-00023" summary="apparently something has changed">
+      <created>1692768278983</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768278983</updated>
+    </task>
+    <task id="LOCAL-00024" summary="enumerated classes">
+      <created>1692768475252</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768475252</updated>
+    </task>
+    <task id="LOCAL-00025" summary="apparently something has changed">
+      <created>1692768487531</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768487531</updated>
+    </task>
+    <task id="LOCAL-00026" summary="apparently something has changed">
+      <created>1692768496846</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768496846</updated>
+    </task>
+    <task id="LOCAL-00027" summary="addig constructors">
+      <created>1692768755584</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768755584</updated>
+    </task>
+    <task id="LOCAL-00028" summary="adding constructors">
+      <created>1692768778529</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768778529</updated>
+    </task>
+    <task id="LOCAL-00029" summary="creating seasons">
+      <created>1692768993573</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768993573</updated>
+    </task>
+    <task id="LOCAL-00030" summary="complete the Semester.java">
+      <created>1692769010713</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1692769010713</updated>
+    </task>
+    <task id="LOCAL-00031" summary="complete the entities">
+      <created>1692769907076</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1692769907076</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add necessary dependencies" />
-    <MESSAGE value="gitignore" />
-    <MESSAGE value="persistence.xml creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="persistence.xml creation" />
+    <MESSAGE value="Person Entity" />
+    <MESSAGE value="adding validation dependency" />
+    <MESSAGE value="adding validation property" />
+    <MESSAGE value="some modifications" />
+    <MESSAGE value="creating Employee.java" />
+    <MESSAGE value="some modifications on salary bounds" />
+    <MESSAGE value="creating Department entity" />
+    <MESSAGE value="adding no args constructor" />
+    <MESSAGE value="change the database" />
+    <MESSAGE value="make a person an abstract class that build each person an id" />
+    <MESSAGE value="create an employee" />
+    <MESSAGE value="create th Course.java entity with the required relationships" />
+    <MESSAGE value="complete the Teacher entity" />
+    <MESSAGE value="enumerated values for payment" />
+    <MESSAGE value="a little modification" />
+    <MESSAGE value="complete the StudentTakenCourse.java" />
+    <MESSAGE value="add numbers to the course title regex" />
+    <MESSAGE value="complete ReleasedCourse.java" />
+    <MESSAGE value="enumerated classes" />
+    <MESSAGE value="apparently something has changed" />
+    <MESSAGE value="addig constructors" />
+    <MESSAGE value="adding constructors" />
+    <MESSAGE value="creating seasons" />
+    <MESSAGE value="complete the Semester.java" />
+    <MESSAGE value="complete the entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete the entities" />
   </component>
 </project>

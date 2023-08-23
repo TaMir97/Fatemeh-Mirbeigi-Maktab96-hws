@@ -19,17 +19,19 @@ public class Student extends BaseEntity<Long> {
     private PersonId id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinColumn(name = "student_department_id")
     private Department studentDepartment;
 
     @OneToMany(mappedBy = "student",
             fetch = FetchType.EAGER)
     private List<StudentTakenCourse> studentTakenCourseList;
 
-
+    @Column(name = "total_credits")
     private Integer totalCredit;
 
     private Double gpa;
 
+    @Column(name = "student_state")
     private StudentState studentState;
     public Student() {
     }

@@ -47,7 +47,7 @@ public class Teacher extends BaseEntity<Long> {
     }
 
     public void setBaseSalary(Long baseSalary) {
-        if (this.teacherLevel.equals("ADJUNCT"))
+        if (this.teacherLevel.equals(TeacherLevel.ADJUNCT))
             this.baseSalary = 0L;
         else
             this.baseSalary = baseSalary;

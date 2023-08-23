@@ -25,7 +25,7 @@ public abstract class PersonId implements Serializable {
     @Pattern(regexp="^[a-zA-Z]+$", message = "FirstName must consist of letters only")
     private String firstname;
 
-    @NotBlank(message = "First name is required")
+    @NotBlank(message = "Last  name is required")
     @Size(max = 100, message = "First name must not exceed 100 characters")
     @Pattern(regexp="^[a-zA-Z]*$", message = "LastName must consist of letters only")
     private String lastname;
@@ -35,7 +35,7 @@ public abstract class PersonId implements Serializable {
     @Pattern(regexp = "^[0-9]+$", message = "Username must consist of numbers only")
     private String username;
 
-    @NotBlank(message = "Username is required")
+    @NotBlank(message = "Password is required")
     @Size(min = 6, max = 20, message = "Username must be between 6 and 20 characters")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Password must consist of letters and numbers only")
     private String password;

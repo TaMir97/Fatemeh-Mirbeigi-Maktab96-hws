@@ -27,7 +27,7 @@ public class Teacher extends BaseEntity<Long> {
 
     private Long totalSalary;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Department teacherDepartment;
 
     @OneToMany(mappedBy = "teacher",

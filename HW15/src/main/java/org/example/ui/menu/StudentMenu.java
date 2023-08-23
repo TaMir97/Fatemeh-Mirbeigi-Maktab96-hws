@@ -24,7 +24,8 @@ public class StudentMenu {
 
     static ReleasedCourseService releasedCourseService = HibernateUtil.getReleasedCourseService();
     static StudentTakenCourseService studentTakenCourseService = HibernateUtil.getStudentTakenCourseService();
-    public static void run(){
+
+    public static void run() {
         boolean initialMenuLoop = true;
 
         while (initialMenuLoop) {
@@ -68,7 +69,7 @@ public class StudentMenu {
                         releasedCourseList.forEach(System.out::println);
                     }
                     case "3" -> {
-                        List<>
+                        List<StudentTakenCourse> studentTakenCourses = new ArrayList<>();
 
                         List<Student> highGPA = studentService.studentsWithHighGPA();
                         Optional<Student> foundObject = highGPA.stream()

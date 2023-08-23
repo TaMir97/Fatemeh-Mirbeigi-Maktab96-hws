@@ -2,6 +2,8 @@ package org.example.service.impl;
 
 import org.example.base.service.BaseService;
 import org.example.base.service.impl.BaseServiceImpl;
+import org.example.domain.ReleasedCourse;
+import org.example.domain.Student;
 import org.example.domain.StudentTakenCourse;
 import org.example.domain.Teacher;
 import org.example.repository.StudentTakenCourseRepository;
@@ -18,4 +20,15 @@ public class StudentTakenCourseServiceImpl
         super(repository);
     }
 
+    @Override
+    public void addCourseByGpa(Student student, ReleasedCourse releasedCourse) {
+        try {
+            repository.beginTransaction();
+            repository.addCourseByGpa(student, releasedCourse);
+            repository.commitTransaction();
+        }catch (Exception e){
+            repository.rollBack();
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -11,16 +11,14 @@
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.password" value="Postgres1234@"/>
 
-      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.cache.use_query_cache" value="false"/>
 
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
 
       <property name="javax.persistence.validation.mode" value="auto" />
-
       <property name="hibernate.validator.apply_to_ddl" value="false"/>
-
       <property name="hibernate.validator.auto-register_listeners" value="false"/>
 
     </properties>

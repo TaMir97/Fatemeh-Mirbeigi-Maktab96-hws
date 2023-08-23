@@ -34,7 +34,22 @@ public class Teacher extends BaseEntity<Long> {
             fetch = FetchType.LAZY)
     private List<ReleasedCourse> releasedCourses;
 
+    public Teacher() {
+    }
 
+    public Teacher(Integer totalCredit,
+                   Long baseSalary,
+                   TeacherLevel teacherLevel,
+                   Long totalSalary,
+                   Department teacherDepartment,
+                   List<ReleasedCourse> releasedCourses) {
+        this.totalCredit = totalCredit;
+        this.baseSalary = baseSalary;
+        this.teacherLevel = teacherLevel;
+        this.totalSalary = totalSalary;
+        this.teacherDepartment = teacherDepartment;
+        this.releasedCourses = releasedCourses;
+    }
 
     public void setTotalCredit() {
         for (ReleasedCourse taughtCourse : releasedCourses) {

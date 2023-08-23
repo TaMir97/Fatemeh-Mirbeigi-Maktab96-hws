@@ -26,5 +26,8 @@ public class StudentTakenCourse extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     private CourseState courseState;
 
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Student student;
+
 
 }

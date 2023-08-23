@@ -4,22 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="complete the entities">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/HibernateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+    <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="defining the initial repositories">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/CourseRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/DepartmentRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/EmployeeRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/ReleasedCourseRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/SemesterRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/StudentRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/StudentTakenCourseRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/TeacherRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/ReleasedCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/ReleasedCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Semester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/StudentTakenCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/StudentTakenCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/base/PersonId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/base/PersonId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -58,7 +52,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "last.edited.regexp": "",
-    "last_opened_file_path": "C:/Users/User/Documents/Java/HWs/HW14/jpaHibernate",
+    "last_opened_file_path": "C:/Users/User/Documents/Java/HWs/HW15/src/main/java/org/example/repository/impl",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -74,6 +68,13 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\Java\HWs\HW15\src\main\java\org\example\repository\impl" />
+      <recent name="C:\Users\User\Documents\Java\HWs\HW15\src\main\java\org\example" />
+      <recent name="C:\Users\User\Documents\Java\HWs\HW15\src\main\java\org\example\base" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
@@ -130,7 +131,7 @@
       <workItem from="1692560167450" duration="2677000" />
       <workItem from="1692635912092" duration="6308000" />
       <workItem from="1692680324725" duration="28359000" />
-      <workItem from="1692773551246" duration="4195000" />
+      <workItem from="1692773551246" duration="10177000" />
     </task>
     <task id="LOCAL-00004" summary="Person Entity">
       <created>1692685992777</created>
@@ -328,19 +329,55 @@
       <option name="project" value="LOCAL" />
       <updated>1692769907076</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="now everything is fine:)">
+      <created>1692780982564</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1692780982564</updated>
+    </task>
+    <task id="LOCAL-00033" summary="ERD">
+      <created>1692781122692</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1692781122692</updated>
+    </task>
+    <task id="LOCAL-00034" summary="make the class normal">
+      <created>1692803527350</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1692803527350</updated>
+    </task>
+    <task id="LOCAL-00035" summary="make the hibernate.hbm2ddl.auto value as update">
+      <created>1692803571764</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1692803571764</updated>
+    </task>
+    <task id="LOCAL-00036" summary="modifications">
+      <created>1692804912075</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1692804912075</updated>
+    </task>
+    <task id="LOCAL-00037" summary="defining the initial repositories">
+      <created>1692805453578</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1692805453578</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Person Entity" />
-    <MESSAGE value="adding validation dependency" />
-    <MESSAGE value="adding validation property" />
-    <MESSAGE value="some modifications" />
-    <MESSAGE value="creating Employee.java" />
-    <MESSAGE value="some modifications on salary bounds" />
     <MESSAGE value="creating Department entity" />
     <MESSAGE value="adding no args constructor" />
     <MESSAGE value="change the database" />
@@ -360,6 +397,12 @@
     <MESSAGE value="creating seasons" />
     <MESSAGE value="complete the Semester.java" />
     <MESSAGE value="complete the entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete the entities" />
+    <MESSAGE value="now everything is fine:)" />
+    <MESSAGE value="ERD" />
+    <MESSAGE value="make the class normal" />
+    <MESSAGE value="make the hibernate.hbm2ddl.auto value as update" />
+    <MESSAGE value="modifications" />
+    <MESSAGE value="defining the initial repositories" />
+    <option name="LAST_COMMIT_MESSAGE" value="defining the initial repositories" />
   </component>
 </project>

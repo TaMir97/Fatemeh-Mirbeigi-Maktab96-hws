@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.ui.menu.MainMenu;
 import org.example.util.HibernateUtil;
 
 import javax.persistence.EntityManager;
@@ -14,9 +15,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        EntityManager entityManager = HibernateUtil.getEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.getTransaction().commit();
+        MainMenu.run();
 
     }
 }

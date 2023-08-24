@@ -16,9 +16,9 @@ import java.util.List;
 @Entity
 public class Student extends BaseEntity<Long> {
     @EmbeddedId
-    private PersonId id;
+    private PersonId personId;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "student_department_id")
     private Department studentDepartment;
 
@@ -33,23 +33,21 @@ public class Student extends BaseEntity<Long> {
 
     @Column(name = "student_state")
     private StudentState studentState;
+
     public Student() {
     }
 
-    public Student(Department studentDepartment,
+    public Student(PersonId personId, Department studentDepartment,
                    List<StudentTakenCourse> studentTakenCourseList,
                    Integer totalCredit,
                    Double gpa,
                    StudentState studentState) {
+        this.personId = personId;
         this.studentDepartment = studentDepartment;
         this.studentTakenCourseList = studentTakenCourseList;
         this.totalCredit = totalCredit;
         this.gpa = gpa;
         this.studentState = studentState;
-    }
-
-    public void setId(PersonId id) {
-        this.id = id;
     }
 
     public Department getStudentDepartment() {
@@ -81,10 +79,10 @@ public class Student extends BaseEntity<Long> {
     public void setGpa() {
         int number = 0;
         for (StudentTakenCourse takenCourse : studentTakenCourseList) {
-            this.gpa += takenCourse.getMark();
+            this.gpa += takenCourse.getMark() * takenCourse.getReleasedCourse().getCourse().getCredit();
             number++;
         }
-        this.gpa/=number;
+        this.gpa /= totalCredit;
     }
 
     public Double getGpa() {

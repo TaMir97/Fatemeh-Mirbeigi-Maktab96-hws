@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class Teacher extends BaseEntity<Long> {
     @EmbeddedId
-    private PersonId id;
+    private PersonId personId;
 
     @Column(name = "total_credit")
     private Integer totalCredit;
@@ -39,12 +39,13 @@ public class Teacher extends BaseEntity<Long> {
     public Teacher() {
     }
 
-    public Teacher(Integer totalCredit,
+    public Teacher(PersonId personId,Integer totalCredit,
                    Long baseSalary,
                    TeacherLevel teacherLevel,
                    Long totalSalary,
                    Department teacherDepartment,
                    List<ReleasedCourse> releasedCourses) {
+        this.personId = personId;
         this.totalCredit = totalCredit;
         this.baseSalary = baseSalary;
         this.teacherLevel = teacherLevel;
@@ -82,8 +83,12 @@ public class Teacher extends BaseEntity<Long> {
         return totalSalary;
     }
 
-    public void setId(PersonId id) {
-        this.id = id;
+    public void setPersonId(PersonId id) {
+        this.personId = id;
+    }
+
+    public PersonId getPersonIdId() {
+        return personId;
     }
 
     public TeacherLevel getTeacherLevel() {

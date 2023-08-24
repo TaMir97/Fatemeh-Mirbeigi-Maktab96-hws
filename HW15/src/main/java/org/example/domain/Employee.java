@@ -20,20 +20,17 @@ import javax.persistence.Enumerated;
 @Entity
 public class Employee extends BaseEntity<Long> {
     @EmbeddedId
-    private PersonId id;
+    private PersonId personId;
 
     @Min(10_000_000)
     private Long salary;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
     public Employee() {
     }
 
-    public Employee(PersonId id, Long salary, Role role) {
-        this.id = id;
+    public Employee(PersonId id, Long salary) {
+        this.personId = id;
         this.salary = salary;
-        this.role = role;
     }
 }

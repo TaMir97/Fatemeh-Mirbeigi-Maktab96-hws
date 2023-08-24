@@ -59,10 +59,8 @@ public class BaseServiceImpl
                 return entity;
             }
 
-        } else {
-            throw new RuntimeException("This entity is not saved");
         }
-        return entity;
+        return null;
     }
 
     @Override
@@ -107,8 +105,8 @@ public class BaseServiceImpl
     @Override
     public boolean isValid(T t) {
         Set<ConstraintViolation<T>> violations = entityValidator.validate(t);
-        if(!violations.isEmpty()){
-            for(ConstraintViolation<T> p : violations)
+        if (!violations.isEmpty()) {
+            for (ConstraintViolation<T> p : violations)
                 System.out.println(p.getMessage());
             return false;
         }

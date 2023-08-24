@@ -7,6 +7,8 @@ import org.example.domain.enums.StudentState;
 import org.example.repository.StudentRepository;
 import org.example.service.StudentService;
 
+import java.util.List;
+
 public class StudentServiceImpl
         extends BaseServiceImpl<Student, Long, StudentRepository>
         implements StudentService {
@@ -44,8 +46,16 @@ public class StudentServiceImpl
         }
         return null;
     }
+
+    @Override
+    public List<Student> studentsWithHighGPA() {
+        return repository.studentsWithHighGPA();
+    }
+
+    @Override
+    public List<Student> studentsWithLowGPA() {
+        return repository.studentsWithLowGPA();
+    }
 }
 
 
-
-}

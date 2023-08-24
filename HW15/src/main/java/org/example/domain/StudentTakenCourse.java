@@ -31,5 +31,12 @@ public class StudentTakenCourse extends BaseEntity<Long> {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Student student;
 
+    private void setCourseState(){
+        if (this.mark < 10){
+            this.courseState = CourseState.FAILED;
+        } else
+            this.courseState = CourseState.PASSED;
+    }
+
 
 }

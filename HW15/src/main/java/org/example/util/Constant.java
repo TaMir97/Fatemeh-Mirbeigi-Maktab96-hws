@@ -26,7 +26,9 @@ public class Constant {
             "Update Existing Released Course",
             "Exit"};
 
-    public static final String[] USER_TEACHER_MENU = {"signIn", "Exit"};
+    public static final String[] USER_TEACHER_AND_STUDENT_MENU = {"signIn", "Exit"};
+    public static final String[] TEACHER_ACCESS = {"Personal Details", "Marking Course", "PayCheck", "Exit"};
+    public static final String[] STUDENT_ACCESS = {"Personal Details", "Released Course", "Choose Course", "Taken Courses", "Exit"};
 
     public static <T> T updateSingleField(T entity) {
         Scanner scanner = new Scanner(System.in);
@@ -41,7 +43,7 @@ public class Constant {
         int selectedFieldIndex = 0;
         try {
             selectedFieldIndex = Integer.parseInt(scanner.nextLine());
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 

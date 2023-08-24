@@ -25,9 +25,8 @@ public class Constant {
             "Delete Existing Released Course",
             "Update Existing Released Course",
             "Exit"};
-    public static final String[] editProfile = {"change username", "change email", "change name", "main menu"};
-    public static final String[] showDirect = {"show all", "delete all", "delete by number", "main menu"};
-    public static final String[] tweetOption = {"like", "comment", "show comments"};
+
+    public static final String[] USER_TEACHER_MENU = {"signIn", "Exit"};
 
     public static <T> T updateSingleField(T entity) {
         Scanner scanner = new Scanner(System.in);
@@ -74,12 +73,5 @@ public class Constant {
         return entity;
     }
 
-
-    public <T,S> void displayAndDeleteRecords(Class<T> entityClass, S entityService) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Fetch all records of the specified entity type
-
-    }
 
 }

@@ -24,5 +24,8 @@ public interface BaseService<T extends BaseEntity<ID>,ID extends Serializable>{
 
     boolean isValid (T t);
 
+    boolean contain(T entity);
+    boolean contain(ID id);
+
 
 }

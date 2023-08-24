@@ -1,26 +1,20 @@
 package org.example.domain;
 
 
+import javax.persistence.DiscriminatorValue;
 import javax.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.example.base.domain.BaseEntity;
-import org.example.domain.base.PersonId;
-import org.example.domain.enums.Role;
+import org.example.domain.base.Person;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 @Getter
 @Setter
-@ToString
 @Entity
-public class Employee extends BaseEntity<Long> {
-    @EmbeddedId
-    private PersonId personId;
+@DiscriminatorValue("Employee")
+public class Employee extends Person {
 
     @Min(10_000_000)
     private Long salary;
@@ -29,8 +23,14 @@ public class Employee extends BaseEntity<Long> {
     public Employee() {
     }
 
-    public Employee(PersonId id, Long salary) {
-        this.personId = id;
+    public Employee(Long salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "salary=" + salary +
+                "} " + super.toString();
     }
 }

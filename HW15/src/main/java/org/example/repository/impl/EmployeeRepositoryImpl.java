@@ -6,6 +6,7 @@ import org.example.repository.EmployeeRepository;
 import org.example.repository.SemesterRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -19,24 +20,34 @@ public class EmployeeRepositoryImpl extends
         super(entityManager);
     }
 
+
+    @Override
     public Employee findByUsernameAndPassword(String username, String password) {
-        CriteriaBuilder criteriaBuilder = entityManger.getCriteriaBuilder();
-        CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
-        Root<Employee> employeeRoot = criteriaQuery.from(Employee.class);
+        TypedQuery<Employee> query = entityManger.createQuery(
+                "SELECT t FROM Teacher t WHERE t.username = :username AND t.password = :password",
+                Employee.class);
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+        return query.getResultList().stream().findFirst().orElse(null);
+    }
 
-        Predicate usernamePredicate = criteriaBuilder.equal(employeeRoot.get("personId").get("username"), username);
-        Predicate passwordPredicate = criteriaBuilder.equal(employeeRoot.get("personId").get("password"), password);
-        Predicate combinedPredicate = criteriaBuilder.and(usernamePredicate, passwordPredicate);
+    @Override
+    public Employee findByFirstnameAndLastname(String firstname, String lastname) {
+        TypedQuery<Employee> query = entityManger.createQuery(
+                "SELECT t FROM Teacher t WHERE t.firstname = :firstname AND t.lastname = :lastname",
+                Employee.class);
+        query.setParameter("firstname", firstname);
+        query.setParameter("lastname", lastname);
+        return query.getResultList().stream().findFirst().orElse(null);
+    }
 
-        criteriaQuery.where(combinedPredicate);
-
-        List<Employee> foundEmployees = entityManger.createQuery(criteriaQuery).getResultList();
-
-        if (!foundEmployees.isEmpty()) {
-            return foundEmployees.get(0);
-        }
-
-        return null;
+    @Override
+    public Employee findByEmail(String email) {
+        TypedQuery<Employee> query = entityManger.createQuery(
+                "SELECT t FROM Teacher t WHERE t.email = :email",
+                Employee.class);
+        query.setParameter("email", email);
+        return query.getResultList().stream().findFirst().orElse(null);
     }
 
     @Override

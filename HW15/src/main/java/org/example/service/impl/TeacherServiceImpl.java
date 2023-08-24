@@ -2,14 +2,10 @@ package org.example.service.impl;
 
 import org.example.base.service.impl.BaseServiceImpl;
 import org.example.domain.Department;
-import org.example.domain.ReleasedCourse;
 import org.example.domain.Teacher;
-import org.example.domain.base.PersonId;
 import org.example.domain.enums.TeacherLevel;
 import org.example.repository.TeacherRepository;
 import org.example.service.TeacherService;
-
-import java.util.List;
 
 public class TeacherServiceImpl
         extends BaseServiceImpl<Teacher, Long, TeacherRepository>
@@ -25,19 +21,22 @@ public class TeacherServiceImpl
     public Teacher signUp(String firstname, String lastname, String username, String password, String email,
                           Long baseSalary, TeacherLevel teacherLevel,
                           Department teacherDepartment) {
-        PersonId personId = new PersonId();
-        personId.setFirstname(firstname);
-        personId.setLastname(lastname);
-        personId.setUsername(username);
-        personId.setPassword(password);
-        personId.setEmail(email);
 
-        Teacher newTeacher = new Teacher();
-        newTeacher.setPersonId(personId);
-        newTeacher.setBaseSalary(baseSalary);
-        newTeacher.setTeacherLevel(teacherLevel);
-        newTeacher.setTeacherDepartment(teacherDepartment);
+        if (repository.findByUsernameAndPassword(username, password) != null ||
+                repository.findByFirstnameAndLastname(firstname, lastname) != null ||
+                repository.findByEmail(email) != null) {
+            Teacher newTeacher = new Teacher();
+            newTeacher.setFirstname(firstname);
+            newTeacher.setLastname(lastname);
+            newTeacher.setUsername(username);
+            newTeacher.setPassword(password);
+            newTeacher.setEmail(email);
+            newTeacher.setBaseSalary(baseSalary);
+            newTeacher.setTeacherLevel(teacherLevel);
+            newTeacher.setTeacherDepartment(teacherDepartment);
 
-        return repository.save(newTeacher);
+            return save(newTeacher);
+        }
+        return null;
     }
 }

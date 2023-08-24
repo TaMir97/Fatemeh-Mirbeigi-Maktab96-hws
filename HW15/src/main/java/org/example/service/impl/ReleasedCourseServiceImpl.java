@@ -9,10 +9,17 @@ import org.example.repository.StudentTakenCourseRepository;
 import org.example.service.ReleasedCourseService;
 import org.example.service.StudentTakenCourseService;
 
+import java.util.List;
+
 public class ReleasedCourseServiceImpl
         extends BaseServiceImpl<ReleasedCourse, Long, ReleasedCourseRepository>
         implements ReleasedCourseService {
     public ReleasedCourseServiceImpl(ReleasedCourseRepository repository) {
         super(repository);
+    }
+
+    @Override
+    public List<ReleasedCourse> findEligibleReleasedCoursesForStudent(Long studentId) {
+        return repository.findEligibleReleasedCoursesForStudent(studentId);
     }
 }

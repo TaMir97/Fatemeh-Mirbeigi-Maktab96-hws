@@ -20,22 +20,43 @@ public class TeacherRepositoryImpl
     }
 
     public Teacher findByUsernameAndPassword(String username, String password) {
-        CriteriaBuilder criteriaBuilder = entityManger.getCriteriaBuilder();
-        CriteriaQuery<Teacher> criteriaQuery = criteriaBuilder.createQuery(Teacher.class);
-        Root<Teacher> teacherRoot = criteriaQuery.from(Teacher.class);
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Teacher> query = cb.createQuery(Teacher.class);
+        Root<Teacher> root = query.from(Teacher.class);
 
-        Predicate usernamePredicate = criteriaBuilder.equal(teacherRoot.get("personId").get("username"), username);
-        Predicate passwordPredicate = criteriaBuilder.equal(teacherRoot.get("personId").get("password"), password);
-        Predicate combinedPredicate = criteriaBuilder.and(usernamePredicate, passwordPredicate);
+        Predicate usernamePredicate = cb.equal(root.get("username"), username);
+        Predicate passwordPredicate = cb.equal(root.get("password"), password);
 
-        criteriaQuery.where(combinedPredicate);
+        query.select(root).where(cb.and(usernamePredicate, passwordPredicate));
+        List<Teacher> resultList = entityManger.createQuery(query).getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
 
-        List<Teacher> foundTeachers = entityManger.createQuery(criteriaQuery).getResultList();
+    @Override
+    public Teacher findByFirstnameAndLastname(String firstname, String lastname) {
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Teacher> query = cb.createQuery(Teacher.class);
+        Root<Teacher> root = query.from(Teacher.class);
 
-        if (!foundTeachers.isEmpty()) {
-            return foundTeachers.get(0);
-        }
-        return null;
+        Predicate firstnamePredicate = cb.equal(root.get("firstname"), firstname);
+        Predicate lastnamePredicate = cb.equal(root.get("lastname"), lastname);
+
+        query.select(root).where(cb.and(firstnamePredicate, lastnamePredicate));
+        List<Teacher> resultList = entityManger.createQuery(query).getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
+    @Override
+    public Teacher findByEmail(String email) {
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Teacher> query = cb.createQuery(Teacher.class);
+        Root<Teacher> root = query.from(Teacher.class);
+
+        Predicate emailPredicate = cb.equal(root.get("email"), email);
+
+        query.select(root).where(emailPredicate);
+        List<Teacher> resultList = entityManger.createQuery(query).getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
     }
 
     @Override

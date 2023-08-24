@@ -1,19 +1,17 @@
 package org.example.domain;
 
 import lombok.ToString;
-import org.example.base.domain.BaseEntity;
-import org.example.domain.base.PersonId;
+import org.example.domain.base.Person;
 import org.example.domain.enums.TeacherLevel;
 
 import javax.persistence.*;
 import java.util.List;
 
 
-@ToString
+
 @Entity
-public class Teacher extends BaseEntity<Long> {
-    @EmbeddedId
-    private PersonId personId;
+@DiscriminatorValue("Teacher")
+public class Teacher extends Person {
 
     @Column(name = "total_credit")
     private Integer totalCredit;
@@ -39,13 +37,12 @@ public class Teacher extends BaseEntity<Long> {
     public Teacher() {
     }
 
-    public Teacher(PersonId personId,Integer totalCredit,
+    public Teacher(Integer totalCredit,
                    Long baseSalary,
                    TeacherLevel teacherLevel,
                    Long totalSalary,
                    Department teacherDepartment,
                    List<ReleasedCourse> releasedCourses) {
-        this.personId = personId;
         this.totalCredit = totalCredit;
         this.baseSalary = baseSalary;
         this.teacherLevel = teacherLevel;
@@ -83,14 +80,6 @@ public class Teacher extends BaseEntity<Long> {
         return totalSalary;
     }
 
-    public void setPersonId(PersonId id) {
-        this.personId = id;
-    }
-
-    public PersonId getPersonIdId() {
-        return personId;
-    }
-
     public TeacherLevel getTeacherLevel() {
         return teacherLevel;
     }
@@ -113,5 +102,17 @@ public class Teacher extends BaseEntity<Long> {
 
     public void setReleasedCourses(List<ReleasedCourse> releasedCourses) {
         this.releasedCourses = releasedCourses;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "totalCredit=" + totalCredit +
+                ", baseSalary=" + baseSalary +
+                ", teacherLevel=" + teacherLevel +
+                ", totalSalary=" + totalSalary +
+                ", teacherDepartment=" + teacherDepartment +
+                ", releasedCourses=" + releasedCourses +
+                "} " + super.toString();
     }
 }

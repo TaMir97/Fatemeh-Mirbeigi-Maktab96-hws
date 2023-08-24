@@ -25,7 +25,7 @@ public class EmployeeMenu {
     static StudentService studentService = HibernateUtil.getStudentService();
     static CourseService courseService = HibernateUtil.getCourseService();
     static ReleasedCourseService releasedCourseService = HibernateUtil.getReleasedCourseService();
-    static StudentTakenCourseService studentTakenCourseService = HibernateUtil.getStudentTakenCourseService();
+
     static SemesterService semesterService = HibernateUtil.getSemesterService();
 
     public static void run() {
@@ -76,7 +76,7 @@ public class EmployeeMenu {
 
         if (employee != null) {
             System.out.println("Login successful!");
-            System.out.println(employee.getSalary());
+            System.out.println(employee);
         } else {
             System.out.println("Login failed. Invalid username or password.");
         }
@@ -102,8 +102,11 @@ public class EmployeeMenu {
             System.out.println(e.getMessage());
         }
         Employee newEmployee = employeeService.signUp(firstname, lastname, username, password, email, baseSalary);
-        System.out.println("The Employee has been signed up:");
-        System.out.println(newEmployee);
+        if (newEmployee != null) {
+            System.out.println("The Employee has been signed up:");
+            System.out.println(newEmployee);
+        } else
+            return;
 
     }
 
@@ -459,6 +462,7 @@ public class EmployeeMenu {
 
         Semester semester = new Semester();
         semester.setSeason(selectedSeason);
+        semesterService.save(semester);
 
         return semester;
     }

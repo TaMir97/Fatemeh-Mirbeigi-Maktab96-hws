@@ -5,4 +5,6 @@ import org.example.domain.Teacher;
 
 public interface TeacherRepository extends BaseRepository<Teacher,Long> {
     Teacher findByUsernameAndPassword(String username, String password);
+    Teacher findByFirstnameAndLastname(String firstname, String lastname);
+    Teacher findByEmail(String email);
 }

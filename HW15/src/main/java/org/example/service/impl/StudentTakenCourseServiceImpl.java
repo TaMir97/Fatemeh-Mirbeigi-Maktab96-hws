@@ -9,10 +9,13 @@ import org.example.repository.TeacherRepository;
 import org.example.service.StudentTakenCourseService;
 import org.example.service.TeacherService;
 
+import java.util.List;
+
 public class StudentTakenCourseServiceImpl
         extends BaseServiceImpl<StudentTakenCourse, Long, StudentTakenCourseRepository>
         implements StudentTakenCourseService {
     public StudentTakenCourseServiceImpl(StudentTakenCourseRepository repository) {
         super(repository);
     }
+
 }

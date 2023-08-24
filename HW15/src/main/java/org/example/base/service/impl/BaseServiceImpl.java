@@ -29,7 +29,8 @@ public class BaseServiceImpl
     @Override
     public T save(T entity) {
         if (!repository.contain(entity)) {
-
+            if (!isValid(entity))
+                return null;
             try {
                 repository.beginTransaction();
                 repository.save(entity);
@@ -39,8 +40,6 @@ public class BaseServiceImpl
                 return null;
             }
 
-        } else {
-            throw new RuntimeException("This entity is already saved");
         }
         return entity;
     }
@@ -49,7 +48,8 @@ public class BaseServiceImpl
     @Override
     public T update(T entity) {
         if (repository.contain(entity)) {
-
+            if(!isValid(entity))
+                return null;
             try {
                 repository.beginTransaction();
                 repository.update(entity);
@@ -71,6 +71,8 @@ public class BaseServiceImpl
     @Override
     public void deleteById(ID id) {
         if (repository.contain(id)) {
+            if(!isValid(repository.findById(id).orElse(null)))
+                return;
             try {
                 repository.beginTransaction();
                 repository.deleteById(id);
@@ -79,8 +81,6 @@ public class BaseServiceImpl
                 repository.rollBack();
             }
 
-        } else {
-            throw new RuntimeException("This entity is not saved");
         }
     }
 
@@ -111,6 +111,17 @@ public class BaseServiceImpl
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean contain(T entity) {
+        return repository.contain(entity) && isValid(entity);
+    }
+
+    @Override
+    public boolean contain(ID id) {
+        return repository.contain(id)
+                && isValid(repository.findById(id).orElse(null));
     }
 
 }

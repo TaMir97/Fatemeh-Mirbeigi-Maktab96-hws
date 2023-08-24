@@ -6,10 +6,7 @@ import org.example.repository.StudentRepository;
 import org.example.repository.StudentTakenCourseRepository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 public class StudentRepositoryImpl extends
@@ -19,22 +16,82 @@ public class StudentRepositoryImpl extends
         super(entityManager);
     }
     public Student findByUsernameAndPassword(String username, String password) {
-        CriteriaBuilder criteriaBuilder = entityManger.getCriteriaBuilder();
-        CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
-        Root<Student> studentRoot = criteriaQuery.from(Student.class);
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Student> query = cb.createQuery(Student.class);
+        Root<Student> root = query.from(Student.class);
 
-        Predicate usernamePredicate = criteriaBuilder.equal(studentRoot.get("id").get("username"), username);
-        Predicate passwordPredicate = criteriaBuilder.equal(studentRoot.get("id").get("password"), password);
-        Predicate combinedPredicate = criteriaBuilder.and(usernamePredicate, passwordPredicate);
+        Predicate usernamePredicate = cb.equal(root.get("username"), username);
+        Predicate passwordPredicate = cb.equal(root.get("password"), password);
 
-        criteriaQuery.where(combinedPredicate);
-        List<Student> foundStudents = entityManger.createQuery(criteriaQuery).getResultList();
+        query.select(root).where(cb.and(usernamePredicate, passwordPredicate));
+        List<Student> resultList = entityManger.createQuery(query).getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
 
-        if (!foundStudents.isEmpty()) {
-            return foundStudents.get(0);
-        }
+    @Override
+    public Student findByFirstnameAndLastname(String firstname, String lastname) {
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Student> query = cb.createQuery(Student.class);
+        Root<Student> root = query.from(Student.class);
 
-        return null;
+        Predicate firstnamePredicate = cb.equal(root.get("firstname"), firstname);
+        Predicate lastnamePredicate = cb.equal(root.get("lastname"), lastname);
+
+        query.select(root).where(cb.and(firstnamePredicate, lastnamePredicate));
+        List<Student> resultList = entityManger.createQuery(query).getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
+    @Override
+    public Student findByEmail(String email) {
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Student> query = cb.createQuery(Student.class);
+        Root<Student> root = query.from(Student.class);
+
+        Predicate emailPredicate = cb.equal(root.get("email"), email);
+
+        query.select(root).where(emailPredicate);
+        List<Student> resultList = entityManger.createQuery(query).getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
+    @Override
+    public List<Student> studentsWithHighGPA() {
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Student> query = cb.createQuery(Student.class);
+        Root<Student> studentRoot = query.from(Student.class);
+
+        Join<Object, Object> takenCoursesJoin = studentRoot.join("studentTakenCourseList");
+        Join<Object, Object> releasedCourseJoin = takenCoursesJoin.join("releasedCourse");
+        Join<Object, Object> courseJoin = releasedCourseJoin.join("course");
+
+        Predicate gpaPredicate = cb.greaterThanOrEqualTo(courseJoin.get("gpa"), 18.0);
+
+
+        query.select(studentRoot)
+                .distinct(true)
+                .where(gpaPredicate);
+
+        return entityManger.createQuery(query).getResultList();
+    }
+
+    @Override
+    public List<Student> studentsWithLowGPA() {
+        CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+        CriteriaQuery<Student> query = cb.createQuery(Student.class);
+        Root<Student> studentRoot = query.from(Student.class);
+
+        Join<Object, Object> takenCoursesJoin = studentRoot.join("studentTakenCourseList");
+        Join<Object, Object> releasedCourseJoin = takenCoursesJoin.join("releasedCourse");
+        Join<Object, Object> courseJoin = releasedCourseJoin.join("course");
+
+        Predicate gpaPredicate = cb.lessThan(courseJoin.get("gpa"), 18.0);
+
+        query.select(studentRoot)
+                .distinct(true)
+                .where(gpaPredicate);
+
+        return entityManger.createQuery(query).getResultList();
     }
 
     @Override

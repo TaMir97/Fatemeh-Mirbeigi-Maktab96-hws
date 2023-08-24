@@ -3,8 +3,7 @@ package org.example.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.example.base.domain.BaseEntity;
-import org.example.domain.base.PersonId;
+import org.example.domain.base.Person;
 import org.example.domain.enums.StudentState;
 
 import javax.persistence.*;
@@ -12,11 +11,9 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @Entity
-public class Student extends BaseEntity<Long> {
-    @EmbeddedId
-    private PersonId personId;
+@DiscriminatorValue("Student")
+public class Student extends Person {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "student_department_id")
@@ -37,12 +34,11 @@ public class Student extends BaseEntity<Long> {
     public Student() {
     }
 
-    public Student(PersonId personId, Department studentDepartment,
+    public Student(Department studentDepartment,
                    List<StudentTakenCourse> studentTakenCourseList,
                    Integer totalCredit,
                    Double gpa,
                    StudentState studentState) {
-        this.personId = personId;
         this.studentDepartment = studentDepartment;
         this.studentTakenCourseList = studentTakenCourseList;
         this.totalCredit = totalCredit;
@@ -95,5 +91,16 @@ public class Student extends BaseEntity<Long> {
 
     public void setStudentState(StudentState studentState) {
         this.studentState = studentState;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentDepartment=" + studentDepartment +
+                ", studentTakenCourseList=" + studentTakenCourseList +
+                ", totalCredit=" + totalCredit +
+                ", gpa=" + gpa +
+                ", studentState=" + studentState +
+                "} " + super.toString();
     }
 }

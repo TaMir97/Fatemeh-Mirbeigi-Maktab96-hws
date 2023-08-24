@@ -5,34 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="base">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exception/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/Printer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/EmployeeMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/StudentMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/TeacherMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/validation/EntityValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/base/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/base/service/BaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/base/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/base/service/impl/BaseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/ReleasedCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/ReleasedCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/base/PersonId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/base/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/enums/Role.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/ReleasedCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/ReleasedCourseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/StudentTakenCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/StudentTakenCourseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/TeacherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/TeacherRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/EmployeeRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/EmployeeRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/ReleasedCourseRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/ReleasedCourseRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/StudentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/StudentRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/TeacherRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/TeacherRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/ReleasedCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ReleasedCourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/StudentTakenCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/StudentTakenCourseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/ReleasedCourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/ReleasedCourseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/StudentTakenCourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/StudentTakenCourseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/EmployeeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/EmployeeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/StudentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/StudentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/TeacherMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/TeacherMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Constant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +77,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Facets",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -156,7 +159,7 @@
       <workItem from="1692635912092" duration="6308000" />
       <workItem from="1692680324725" duration="28359000" />
       <workItem from="1692773551246" duration="14125000" />
-      <workItem from="1692817693296" duration="30888000" />
+      <workItem from="1692817693296" duration="46758000" />
     </task>
     <task id="LOCAL-00004" summary="Person Entity">
       <created>1692685992777</created>
@@ -417,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692824428889</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="base">
+      <created>1692851360243</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1692851360243</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

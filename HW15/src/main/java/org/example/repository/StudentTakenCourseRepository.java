@@ -6,5 +6,5 @@ import org.example.domain.Student;
 import org.example.domain.StudentTakenCourse;
 
 public interface StudentTakenCourseRepository extends BaseRepository<StudentTakenCourse,Long> {
-    void addCourseByGpa(Student student, ReleasedCourse releasedCourse);
+    StudentTakenCourse addCourseByGpa(Student student, ReleasedCourse releasedCourse);
 }

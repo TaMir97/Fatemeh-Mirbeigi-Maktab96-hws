@@ -3,11 +3,9 @@ package org.example.ui.menu;
 import org.example.domain.ReleasedCourse;
 import org.example.domain.Student;
 import org.example.domain.StudentTakenCourse;
-import org.example.domain.Teacher;
 import org.example.service.ReleasedCourseService;
 import org.example.service.StudentService;
 import org.example.service.StudentTakenCourseService;
-import org.example.service.TeacherService;
 import org.example.ui.Printer;
 import org.example.util.Constant;
 import org.example.util.HibernateUtil;
@@ -57,6 +55,7 @@ public class StudentMenu {
             boolean initialMenuLoop = true;
 
             while (initialMenuLoop) {
+                List<StudentTakenCourse> studentTakenCourses = new ArrayList<>();
                 System.out.println("Enter your choice: ");
                 Printer.printItem(Constant.STUDENT_ACCESS, "Teacher Menu");
                 String initialInput = input.nextLine();
@@ -69,7 +68,7 @@ public class StudentMenu {
                         releasedCourseList.forEach(System.out::println);
                     }
                     case "3" -> {
-                        List<StudentTakenCourse> studentTakenCourses = new ArrayList<>();
+                        List<ReleasedCourse> releasedCourseList = releasedCourseService.showAll().stream().toList();
 
                         List<Student> highGPA = studentService.studentsWithHighGPA();
                         Optional<Student> foundObject = highGPA.stream()
@@ -77,7 +76,30 @@ public class StudentMenu {
                                 .findFirst();
 
                         if (foundObject.isPresent()) {
-                            // Object found
+                            int totalCredit = 0;
+                            while (totalCredit <= 24) {
+                                for (int i = 0; i < releasedCourseList.size(); i++) {
+                                    System.out.println(i + ": " + releasedCourseList.get(i));
+                                }
+
+                                System.out.print("Choose an item by entering its index: ");
+                                int selectedIndex = -1;
+                                try {
+                                    selectedIndex = input.nextInt();
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+
+                                if (selectedIndex >= 0 && selectedIndex < releasedCourseList.size()) {
+                                    ReleasedCourse chosenItem = releasedCourseList.get(selectedIndex);
+                                    totalCredit += chosenItem.getCourse().getCredit();
+                                    studentTakenCourses.add(studentTakenCourseService.addCourseByGpa(student, chosenItem));
+                                    System.out.println("Chosen item: " + chosenItem);
+                                } else {
+                                    System.out.println("Invalid index. Please choose a valid index.");
+                                }
+                            }
+
                         }
 
                         List<Student> lowGPA = studentService.studentsWithLowGPA();
@@ -86,11 +108,34 @@ public class StudentMenu {
                                 .findFirst();
 
                         if (found.isPresent()) {
-                            // Object found
+                            int totalCredit = 0;
+                            while (totalCredit <= 20) {
+                                for (int i = 0; i < releasedCourseList.size(); i++) {
+                                    System.out.println(i + ": " + releasedCourseList.get(i));
+                                }
+
+                                System.out.print("Choose an item by entering its index: ");
+                                int selectedIndex = -1;
+                                try {
+                                    selectedIndex = input.nextInt();
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+
+                                if (selectedIndex >= 0 && selectedIndex < releasedCourseList.size()) {
+                                    ReleasedCourse chosenItem = releasedCourseList.get(selectedIndex);
+                                    totalCredit += chosenItem.getCourse().getCredit();
+                                    studentTakenCourses.add(studentTakenCourseService.addCourseByGpa(student, chosenItem));
+                                    System.out.println("Chosen item: " + chosenItem);
+                                } else {
+                                    System.out.println("Invalid index. Please choose a valid index.");
+                                }
+                            }
                         }
 
                     }
-                    case "4" -> initialMenuLoop = false;
+                    case "4" -> studentTakenCourses.forEach(System.out::println);
+                    case "5" -> initialMenuLoop = false;
                     default -> System.out.println("This choice does not exist.");
                 }
             }

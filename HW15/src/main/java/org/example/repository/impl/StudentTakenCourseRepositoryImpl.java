@@ -16,7 +16,7 @@ public class StudentTakenCourseRepositoryImpl extends
         super(entityManager);
     }
 
-    public void addCourseByGpa(Student student, ReleasedCourse releasedCourse) {
+    public StudentTakenCourse addCourseByGpa(Student student, ReleasedCourse releasedCourse) {
         int totalCredits = student.getTotalCredit();
 
         StudentTakenCourse newTakenCourse = new StudentTakenCourse();
@@ -25,6 +25,9 @@ public class StudentTakenCourseRepositoryImpl extends
         student.getStudentTakenCourseList().add(newTakenCourse);
         student.setTotalCredit(totalCredits + releasedCourse.getCourse().getCredit());
         entityManger.merge(student);
+        entityManger.persist(newTakenCourse);
+
+        return newTakenCourse;
 
     }
 

@@ -8,5 +8,5 @@ import org.example.domain.StudentTakenCourse;
 import java.util.List;
 
 public interface StudentTakenCourseService extends BaseService<StudentTakenCourse,Long> {
-    void addCourseByGpa(Student student, ReleasedCourse releasedCourse);
+    StudentTakenCourse addCourseByGpa(Student student, ReleasedCourse releasedCourse);
 }

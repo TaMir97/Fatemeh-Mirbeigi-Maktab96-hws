@@ -21,14 +21,17 @@ public class StudentTakenCourseServiceImpl
     }
 
     @Override
-    public void addCourseByGpa(Student student, ReleasedCourse releasedCourse) {
+    public StudentTakenCourse addCourseByGpa(Student student, ReleasedCourse releasedCourse) {
         try {
             repository.beginTransaction();
             repository.addCourseByGpa(student, releasedCourse);
             repository.commitTransaction();
+            return repository.addCourseByGpa(student, releasedCourse);
         }catch (Exception e){
             repository.rollBack();
             System.out.println(e.getMessage());
+            return null;
         }
+
     }
 }

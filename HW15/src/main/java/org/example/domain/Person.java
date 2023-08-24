@@ -1,4 +1,4 @@
-package org.example.domain.base;
+package org.example.domain;
 
 import javax.validation.constraints.NotBlank;
 

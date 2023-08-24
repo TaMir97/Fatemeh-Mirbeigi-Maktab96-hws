@@ -1,7 +1,5 @@
 package org.example.domain;
 
-import lombok.ToString;
-import org.example.domain.base.Person;
 import org.example.domain.enums.TeacherLevel;
 
 import javax.persistence.*;

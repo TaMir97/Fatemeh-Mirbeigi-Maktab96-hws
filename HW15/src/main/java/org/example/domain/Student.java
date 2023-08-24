@@ -2,8 +2,6 @@ package org.example.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import org.example.domain.base.Person;
 import org.example.domain.enums.StudentState;
 
 import javax.persistence.*;

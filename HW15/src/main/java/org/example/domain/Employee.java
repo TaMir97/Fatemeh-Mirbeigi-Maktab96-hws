@@ -5,8 +5,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import org.example.domain.base.Person;
 
 import javax.persistence.Entity;
 

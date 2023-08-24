@@ -20,23 +20,6 @@ public class App
 {
     public static void main( String[] args )
     {
-//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(entityManager);
-//        EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository);
-//
-//        Employee employee = new Employee();
-//        employee.setFirstname("Tahoora");
-//        employee.setLastname("Mirbeigi");
-//        employee.setUsername("9913731020");
-//        employee.setPassword("12345t");
-//        employee.setEmail("tahoora_m@yahoo.com");
-//        employee.setSalary(10000000L);
-//
-//        employeeRepository.beginTransaction();
-//        employeeService.save(employee);
-//        employeeRepository.commitTransaction();
-
         MainMenu.run();
     }
 }

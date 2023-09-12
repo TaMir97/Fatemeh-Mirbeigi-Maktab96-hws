@@ -1,0 +1,126 @@
+[
+  {
+    "City": "Tehran",
+    "CityType": "Tehran"
+  },
+  {
+    "City": "Yazd",
+    "CityType": "other"
+  },
+  {
+    "City": "Alborz",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "Isfahan",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "Fars",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "East_Azerbaijan",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "West_Azerbaijan",
+    "CityType": "other"
+  },
+  {
+    "City": "Ardabil",
+    "CityType": "other"
+  },
+  {
+    "City": "Gilan",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "Mazandaran",
+    "CityType": "other"
+  },
+  {
+    "City": "Gorgan",
+    "CityType": "other"
+  },
+  {
+    "City": "Razavi_Khorasan",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "North_Khorasan",
+    "CityType": "other"
+  },
+  {
+    "City": "South_Khorasan",
+    "CityType": "other"
+  },
+  {
+    "City": "Semnan",
+    "CityType": "other"
+  },
+  {
+    "City": "Markazi",
+    "CityType": "other"
+  },
+  {
+    "City": "Kerman",
+    "CityType": "other"
+  },
+  {
+    "City": "Qom",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "Hamedan",
+    "CityType": "other"
+  },
+  {
+    "City": "Kurdistan",
+    "CityType": "other"
+  },
+  {
+    "City": "Zanjan",
+    "CityType": "other"
+  },
+  {
+    "City": "Kermanshah",
+    "CityType": "other"
+  },
+  {
+    "City": "Qazvin",
+    "CityType": "other"
+  },
+  {
+    "City": "Ilam",
+    "CityType": "other"
+  },
+  {
+    "City": "Lorestan",
+    "CityType": "other"
+  },
+  {
+    "City": "Sistan and Baluchestan",
+    "CityType": "other"
+  },
+  {
+    "City": "Khuzestan",
+    "CityType": "metropolis"
+  },
+  {
+    "City": "Chaharmahl and Bakhtiari",
+    "CityType": "other"
+  },
+  {
+    "City": "Kohkiluye-BoyerAhmad",
+    "CityType": "other"
+  },
+  {
+    "City": "Bushehr",
+    "CityType": "other"
+  },
+  {
+    "City": "Hormozgan",
+    "CityType": "other"
+  }
+]

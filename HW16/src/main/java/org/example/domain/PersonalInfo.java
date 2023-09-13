@@ -22,7 +22,7 @@ public class PersonalInfo {
     private String homeCity;
     @Enumerated(EnumType.STRING)
     private MarriageState marriageState;
-    private Long supposeBirthCertificateId;
+    private Long spouseBirthCertificateId;
 
     public PersonalInfo() {
     }
@@ -38,7 +38,7 @@ public class PersonalInfo {
         birthdate = personalInfoBuilder.birthdate;
         homeCity = personalInfoBuilder.homeCity;
         marriageState = personalInfoBuilder.marriageState;
-        supposeBirthCertificateId = personalInfoBuilder.supposeBirthCertificateId;
+        spouseBirthCertificateId = personalInfoBuilder.spouseBirthCertificateId;
     }
 
     public String getFirstname() {
@@ -81,8 +81,8 @@ public class PersonalInfo {
         return marriageState;
     }
 
-    public Long getSupposeBirthCertificateId() {
-        return supposeBirthCertificateId;
+    public Long getSpouseBirthCertificateId() {
+        return spouseBirthCertificateId;
     }
 
     public static class PersonalInfoBuilder {
@@ -96,7 +96,7 @@ public class PersonalInfo {
         private LocalDate birthdate;
         private String homeCity;
         private MarriageState marriageState;
-        private Long supposeBirthCertificateId;
+        private Long spouseBirthCertificateId;
 
 
         public PersonalInfoBuilder firstname(String firstname) {
@@ -148,8 +148,8 @@ public class PersonalInfo {
             return this;
         }
 
-        public PersonalInfoBuilder supposeBirthCertificateId(Long supposeBirthCertificateId) {
-            this.supposeBirthCertificateId = supposeBirthCertificateId;
+        public PersonalInfoBuilder spouseBirthCertificateId(Long spouseBirthCertificateId) {
+            this.spouseBirthCertificateId = spouseBirthCertificateId;
             return this;
         }
 

@@ -21,8 +21,10 @@ public class EducationalInfo {
     private EducationalGrade grade;
     private String city;
 
-    public EducationalInfo(){}
-    private EducationalInfo(EducationalInfoBuilder educationalInfoBuilder){
+    public EducationalInfo() {
+    }
+
+    private EducationalInfo(EducationalInfoBuilder educationalInfoBuilder) {
         studentId = educationalInfoBuilder.studentId;
         universityName = educationalInfoBuilder.universityName;
         universityType = educationalInfoBuilder.universityType;
@@ -30,6 +32,34 @@ public class EducationalInfo {
         startedYear = educationalInfoBuilder.startedYear;
         grade = educationalInfoBuilder.grade;
         city = educationalInfoBuilder.city;
+    }
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public String getUniversityName() {
+        return universityName;
+    }
+
+    public UniversityType getUniversityType() {
+        return universityType;
+    }
+
+    public GovernmentUniversity getGovernmentUniversityType() {
+        return governmentUniversityType;
+    }
+
+    public Integer getStartedYear() {
+        return startedYear;
+    }
+
+    public EducationalGrade getGrade() {
+        return grade;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public static class EducationalInfoBuilder {
@@ -77,9 +107,8 @@ public class EducationalInfo {
         }
 
         public EducationalInfo build() {
-            EducationalInfo educationalInfo = new EducationalInfo();
 
-            return educationalInfo;
+            return new EducationalInfo(this);
         }
     }
 }

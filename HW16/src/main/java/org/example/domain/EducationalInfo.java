@@ -76,7 +76,6 @@ public class EducationalInfo {
         private Integer startedYear;
         private EducationalGrade grade;
         private String city;
-
         private Boolean isGraduated;
 
 
@@ -115,8 +114,8 @@ public class EducationalInfo {
             return this;
         }
 
-        public EducationalInfoBuilder isGraduated(String city) {
-            this.city = city;
+        public EducationalInfoBuilder isGraduated(Boolean isGraduated) {
+            this.isGraduated = isGraduated;
             return this;
         }
 
@@ -125,4 +124,5 @@ public class EducationalInfo {
             return new EducationalInfo(this);
         }
     }
+
 }

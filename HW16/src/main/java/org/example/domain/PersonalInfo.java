@@ -19,8 +19,10 @@ public class PersonalInfo {
     private Long birthCertificateNumber;
     private Long birthCertificateId;
     private LocalDate birthdate;
+    private String homeCity;
     @Enumerated(EnumType.STRING)
     private MarriageState marriageState;
+    private Long supposeBirthCertificateId;
 
     public PersonalInfo() {
     }
@@ -34,7 +36,9 @@ public class PersonalInfo {
         birthCertificateNumber = personalInfoBuilder.birthCertificateNumber;
         birthCertificateId = personalInfoBuilder.birthCertificateId;
         birthdate = personalInfoBuilder.birthdate;
+        homeCity = personalInfoBuilder.homeCity;
         marriageState = personalInfoBuilder.marriageState;
+        supposeBirthCertificateId = personalInfoBuilder.supposeBirthCertificateId;
     }
 
     public String getFirstname() {
@@ -65,12 +69,20 @@ public class PersonalInfo {
         return birthCertificateId;
     }
 
+    public String getHomeCity() {
+        return homeCity;
+    }
+
     public LocalDate getBirthdate() {
         return birthdate;
     }
 
     public MarriageState getMarriageState() {
         return marriageState;
+    }
+
+    public Long getSupposeBirthCertificateId() {
+        return supposeBirthCertificateId;
     }
 
     public static class PersonalInfoBuilder {
@@ -82,7 +94,10 @@ public class PersonalInfo {
         private Long birthCertificateNumber;
         private Long birthCertificateId;
         private LocalDate birthdate;
+        private String homeCity;
         private MarriageState marriageState;
+        private Long supposeBirthCertificateId;
+
 
         public PersonalInfoBuilder firstname(String firstname) {
             this.firstname = firstname;
@@ -123,9 +138,18 @@ public class PersonalInfo {
             this.birthdate = birthdate;
             return this;
         }
+        public PersonalInfoBuilder homeCity(String homeCity) {
+            this.homeCity = homeCity;
+            return this;
+        }
 
         public PersonalInfoBuilder marriageState(MarriageState marriageState) {
             this.marriageState = marriageState;
+            return this;
+        }
+
+        public PersonalInfoBuilder supposeBirthCertificateId(Long supposeBirthCertificateId) {
+            this.supposeBirthCertificateId = supposeBirthCertificateId;
             return this;
         }
 
@@ -134,18 +158,5 @@ public class PersonalInfo {
         }
     }
 
-    @Override
-    public String toString() {
-        return "PersonalInfo{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", gender=" + gender +
-                ", fatherName='" + fatherName + '\'' +
-                ", motherName='" + motherName + '\'' +
-                ", birthCertificateNumber=" + birthCertificateNumber +
-                ", birthCertificateId=" + birthCertificateId +
-                ", birthdate=" + birthdate +
-                ", marriageState=" + marriageState +
-                '}';
-    }
+
 }

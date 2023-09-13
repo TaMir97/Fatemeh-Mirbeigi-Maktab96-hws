@@ -20,6 +20,7 @@ public class EducationalInfo {
     @Enumerated(EnumType.STRING)
     private EducationalGrade grade;
     private String city;
+    private Boolean isGraduated;
 
     public EducationalInfo() {
     }
@@ -32,6 +33,7 @@ public class EducationalInfo {
         startedYear = educationalInfoBuilder.startedYear;
         grade = educationalInfoBuilder.grade;
         city = educationalInfoBuilder.city;
+        isGraduated = educationalInfoBuilder.isGraduated;
     }
 
     public Long getStudentId() {
@@ -62,6 +64,10 @@ public class EducationalInfo {
         return city;
     }
 
+    public Boolean getGraduated() {
+        return isGraduated;
+    }
+
     public static class EducationalInfoBuilder {
         private Long studentId;
         private String universityName;
@@ -71,37 +77,45 @@ public class EducationalInfo {
         private EducationalGrade grade;
         private String city;
 
-        public EducationalInfoBuilder setStudentId(Long studentId) {
+        private Boolean isGraduated;
+
+
+        public EducationalInfoBuilder studentId(Long studentId) {
             this.studentId = studentId;
             return this;
         }
 
-        public EducationalInfoBuilder setUniversityName(String universityName) {
+        public EducationalInfoBuilder universityName(String universityName) {
             this.universityName = universityName;
             return this;
         }
 
-        public EducationalInfoBuilder setUniversityType(UniversityType universityType) {
+        public EducationalInfoBuilder universityType(UniversityType universityType) {
             this.universityType = universityType;
             return this;
         }
 
-        public EducationalInfoBuilder setGovernmentUniversityType(GovernmentUniversity governmentUniversityType) {
+        public EducationalInfoBuilder governmentUniversityType(GovernmentUniversity governmentUniversityType) {
             this.governmentUniversityType = governmentUniversityType;
             return this;
         }
 
-        public EducationalInfoBuilder setStartedYear(Integer startedYear) {
+        public EducationalInfoBuilder startedYear(Integer startedYear) {
             this.startedYear = startedYear;
             return this;
         }
 
-        public EducationalInfoBuilder setGrade(EducationalGrade grade) {
+        public EducationalInfoBuilder grade(EducationalGrade grade) {
             this.grade = grade;
             return this;
         }
 
-        public EducationalInfoBuilder setCity(String city) {
+        public EducationalInfoBuilder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public EducationalInfoBuilder isGraduated(String city) {
             this.city = city;
             return this;
         }

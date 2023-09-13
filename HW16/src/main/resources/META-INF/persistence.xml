@@ -7,7 +7,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <properties>
       <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/university_database"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/university_loan_database"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.password" value="Postgres1234@"/>
 

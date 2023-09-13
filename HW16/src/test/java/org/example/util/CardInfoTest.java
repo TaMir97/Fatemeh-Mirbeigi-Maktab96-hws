@@ -36,7 +36,7 @@ public class CardInfoTest extends TestCase {
                 new CardInfo(value);
                 fail("Expected IllegalArgumentException was not thrown");
             } catch (IllegalArgumentException e) {
-                // This is expected
+                System.out.println(e.getMessage());
             }
         }
     }

@@ -10,7 +10,7 @@ public class CardInfo {
     public CardInfo() {
     }
 
-    public CardInfo(String value) {
+    public void setValue(String value) {
         if (isValid(value)) {
             this.value = value;
         } else {

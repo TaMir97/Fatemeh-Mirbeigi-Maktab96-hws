@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="add new methods">
+    <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="refactor">
+      <change afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/Loan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/util/DateRange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/util/DateRangeValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/StudentTakenCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/StudentTakenCourseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/StudentTakenCourseRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/impl/StudentTakenCourseRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/StudentTakenCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/StudentTakenCourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/StudentTakenCourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/StudentTakenCourseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/StudentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/menu/StudentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW16/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/LoanAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/LoanAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,31 +43,31 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last.edited.regexp": "",
-    "last_opened_file_path": "C:/Users/User/Documents/Java/HWs/HW15/src/main/java/org/example/service/EntityUpdateService.java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Facets",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "inlay.hints",
-    "two.files.diff.last.used.file": "C:/Users/User/Documents/Java/HWs/HW15/src/main/java/org/example/service/EntityUpdateService.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last.edited.regexp&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/Java/HWs/HW15&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/User/Documents/Java/HWs/HW15/src/main/java/org/example/service/EntityUpdateService.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\Java\HWs\HW15\src\main\java\org\example" />
@@ -135,7 +136,12 @@
       <workItem from="1692635912092" duration="6308000" />
       <workItem from="1692680324725" duration="28359000" />
       <workItem from="1692773551246" duration="14125000" />
-      <workItem from="1692817693296" duration="52817000" />
+      <workItem from="1692817693296" duration="53711000" />
+      <workItem from="1693153254012" duration="1278000" />
+      <workItem from="1693210186500" duration="768000" />
+      <workItem from="1694027988600" duration="2440000" />
+      <workItem from="1694499424443" duration="961000" />
+      <workItem from="1694579604120" duration="650000" />
     </task>
     <task id="LOCAL-00004" summary="Person Entity">
       <created>1692685992777</created>
@@ -431,7 +437,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692880395828</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="done:,)">
+      <created>1692882179766</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1692882179766</updated>
+    </task>
+    <task id="LOCAL-00047" summary="refactor">
+      <created>1692882766468</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1692882766468</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,8 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete the Teacher entity" />
-    <MESSAGE value="enumerated values for payment" />
     <MESSAGE value="a little modification" />
     <MESSAGE value="complete the StudentTakenCourse.java" />
     <MESSAGE value="add numbers to the course title regex" />
@@ -474,6 +492,8 @@
     <MESSAGE value="additional methods" />
     <MESSAGE value="EDR2" />
     <MESSAGE value="add new methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new methods" />
+    <MESSAGE value="done:,)" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>

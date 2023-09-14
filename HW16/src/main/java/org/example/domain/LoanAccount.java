@@ -3,9 +3,7 @@ package org.example.domain;
 import org.example.base.domain.BaseEntity;
 import org.example.util.PasswordGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class LoanAccount extends BaseEntity<Long> {
@@ -14,10 +12,22 @@ public class LoanAccount extends BaseEntity<Long> {
     private Student student;
     private String username;
     private String password;
+    @Embedded
+    private CardInfo cardInfo;
 
     public LoanAccount() {
-        this.username = this.student.getPersonalInfo().getBirthCertificateId().toString();
-        this.password = passwordGenerator();
+    }
+
+    public LoanAccount(Student student) {
+        this.student = student;
+        if (this.student != null) {
+            this.username = this.student.getPersonalInfo().getBirthCertificateId().toString();
+            this.password = passwordGenerator();
+        }
+    }
+
+    public void setCardInfo(CardInfo cardInfo) {
+        this.cardInfo = cardInfo;
     }
 
     public Student getStudent() {
@@ -32,8 +42,13 @@ public class LoanAccount extends BaseEntity<Long> {
         return password;
     }
 
+    public CardInfo getCardInfo() {
+        return cardInfo;
+    }
+
     private String passwordGenerator() {
         int lengthPassword = 8;
         return PasswordGenerator.generatePassword(lengthPassword);
     }
+
 }

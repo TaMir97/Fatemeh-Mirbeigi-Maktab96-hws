@@ -24,7 +24,6 @@ import javax.persistence.Persistence;
 public class ApplicationContext {
     private static final EntityManagerFactory emf;
     private static final EntityManager em;
-
     private static final InstallmentRepository INSTALLMENT_REPOSITORY;
     private static final InstallmentService INSTALLMENT_SERVICE;
     private static final LoanAccountRepository LOAN_ACCOUNT_REPOSITORY;

@@ -8,6 +8,7 @@ import org.example.repository.LoanRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class LoanRepoImpl extends
         BaseRepositoryImpl<Loan,Long>
@@ -29,4 +30,14 @@ public class LoanRepoImpl extends
         Loan loan = (Loan) query.getSingleResult();
         return loan.getLoanType().equals(LoanType.MORTGAGE);
     }
+
+    @Override
+    public List<Loan> installmentsPayments(LoanAccount loanAccount) {
+        String jpql = "SELECT l FROM Loan l WHERE l.loanAccount = :loanAccount";
+        Query query = entityManger.createQuery(jpql, Loan.class);
+        query.setParameter("loanAccount", loanAccount);
+        return query.getResultList();
+    }
+
+
 }

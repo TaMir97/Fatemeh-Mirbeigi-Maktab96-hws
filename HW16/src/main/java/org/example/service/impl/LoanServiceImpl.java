@@ -6,6 +6,9 @@ import org.example.domain.LoanAccount;
 import org.example.repository.LoanRepository;
 import org.example.service.LoanService;
 
+import javax.persistence.criteria.Predicate;
+import java.util.List;
+
 public class LoanServiceImpl
         extends BaseServiceImpl<Loan, Long, LoanRepository>
         implements LoanService {
@@ -17,4 +20,11 @@ public class LoanServiceImpl
     public boolean mortgageLoan(LoanAccount loanAccount) {
         return repository.mortgageLoan(loanAccount);
     }
+
+    @Override
+    public List<Loan> installmentsPayments(LoanAccount loanAccount) {
+        return repository.installmentsPayments(loanAccount);
+    }
+
+
 }

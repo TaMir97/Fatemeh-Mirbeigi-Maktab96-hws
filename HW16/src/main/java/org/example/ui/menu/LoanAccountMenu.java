@@ -1,10 +1,8 @@
 package org.example.ui.menu;
 
-import org.example.domain.CardInfo;
-import org.example.domain.Loan;
-import org.example.domain.LoanAccount;
-import org.example.domain.Student;
+import org.example.domain.*;
 import org.example.domain.enums.*;
+import org.example.service.InstallmentService;
 import org.example.service.LoanAccountService;
 import org.example.service.LoanService;
 import org.example.service.StudentService;
@@ -14,13 +12,14 @@ import org.example.util.Constant;
 import org.example.util.JsonFileReader;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class LoanAccountMenu {
     static StudentService studentService = ApplicationContext.getStudentService();
     static LoanAccountService loanAccountService = ApplicationContext.getLoanAccountService();
     static LoanService loanService = ApplicationContext.getLoanService();
-
+    static InstallmentService installmentService = ApplicationContext.getInstallmentService();
     static LoanAccount loanAccount = new LoanAccount();
     static LocalDate registerDate = LocalDate.now();
 
@@ -168,6 +167,7 @@ public class LoanAccountMenu {
         System.out.println("password: ");
         String username = input.nextLine();
         String password = input.nextLine();
+        loanAccount = loanAccountService.login(username, password);
         if (loanAccountService.login(username, password) != null) {
             boolean initialMenuLoop = true;
             while (initialMenuLoop) {
@@ -175,8 +175,8 @@ public class LoanAccountMenu {
                 Printer.printItem(Constant.LOAN_ACCOUNT, "Loan or Installments: ");
                 String initialInput = input.nextLine();
                 switch (initialInput) {
-                    case "1" -> InstallmentMenu.payment();
-                    case "2" -> chooseALoanType();
+                    case "2" -> payment();
+                    case "1" -> chooseALoanType();
                     case "3" -> updateField();
                     case "4" -> initialMenuLoop = false;
                     default -> System.out.println("This choice does not exist.");
@@ -186,7 +186,37 @@ public class LoanAccountMenu {
 
     }
 
-    private static void updateField() {
+    public static void payment() {
+        if (loanAccount.getStudent().getGraduated()) {
+            List<Loan> loans = loanService.installmentsPayments(loanAccount);
+            Long totalLoanAmount = loans.stream()
+                    .mapToLong(Loan::getTotalAmount)
+                    .sum();
+            Installment installment = new Installment();
+            installment.setPayedAmount(totalLoanAmount / 12);
+            for (int i = 0; i < loans.size(); i++) {
+                System.out.println("Index: " + i);
+                System.out.println(loans.get(i));
+            }
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter the index to save: ");
+            int selectedIndex = scanner.nextInt();
+
+            if (selectedIndex >= 0 && selectedIndex < loans.size()) {
+                Loan selectedLoan = loans.get(selectedIndex);
+                installment.setLoan(selectedLoan);
+                System.out.println("You selected: " + selectedLoan);
+            } else {
+                System.out.println("Invalid index selected.");
+            }
+            installment.setDateOfPayment(LocalDate.now());
+            installmentService.save(installment);
+
+        }
+    }
+
+    public static void updateField() {
         Constant.updateSingleField(loanAccount.getStudent());
     }
 
@@ -215,7 +245,7 @@ public class LoanAccountMenu {
         }
     }
 
-    private static void mortgage() {
+    public static void mortgage() {
         Long totalAmount;
         if (loanAccount.getStudent().getGrade().equals(EducationalGrade.ASSOCIATE) ||
                 loanAccount.getStudent().getGrade().equals(EducationalGrade.BACHELOR) ||
@@ -238,7 +268,7 @@ public class LoanAccountMenu {
         loanService.save(loan);
     }
 
-    private static void educational() {
+    public static void educational() {
         Long totalAmount;
         if (loanAccount.getStudent().getGrade().equals(EducationalGrade.ASSOCIATE) ||
                 loanAccount.getStudent().getGrade().equals(EducationalGrade.BACHELOR)) {
@@ -258,7 +288,7 @@ public class LoanAccountMenu {
         loanService.save(loan);
     }
 
-    private static void tuition() {
+    public static void tuition() {
         Long totalAmount;
         if (loanAccount.getStudent().getGrade().equals(EducationalGrade.ASSOCIATE) ||
                 loanAccount.getStudent().getGrade().equals(EducationalGrade.BACHELOR)) {

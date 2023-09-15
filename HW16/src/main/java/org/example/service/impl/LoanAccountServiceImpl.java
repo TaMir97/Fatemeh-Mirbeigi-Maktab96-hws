@@ -17,10 +17,8 @@ public class LoanAccountServiceImpl
     @Override
     public LoanAccount signUp(Student student, CardInfo cardInfo) {
         LoanAccount newLoanAccount = new LoanAccount();
-        if (repository.findByUsername(student.getBirthCertificateId()) != null){
-            newLoanAccount.setStudent(student);
-            newLoanAccount.setCardInfo(cardInfo);
-        }
+        newLoanAccount.setStudent(student);
+        newLoanAccount.setCardInfo(cardInfo);
         return save(newLoanAccount);
     }
 

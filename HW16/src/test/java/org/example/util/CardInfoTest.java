@@ -16,7 +16,7 @@ public class CardInfoTest extends TestCase {
 
         for (String value : validValues) {
             try {
-                CardInfo cardInfo = new CardInfo(value);
+                new CardInfo().setValue(value);
             } catch (IllegalArgumentException e) {
                 fail("IllegalArgumentException should not have been thrown for valid input: " + value);
             }
@@ -33,7 +33,7 @@ public class CardInfoTest extends TestCase {
 
         for (String value : invalidValues) {
             try {
-                new CardInfo(value);
+                new CardInfo().setValue(value);
                 fail("Expected IllegalArgumentException was not thrown");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

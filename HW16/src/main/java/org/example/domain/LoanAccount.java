@@ -18,10 +18,12 @@ public class LoanAccount extends BaseEntity<Long> {
     public LoanAccount() {
     }
 
-    public LoanAccount(Student student) {
+
+
+    public void setStudent(Student student) {
         this.student = student;
         if (this.student != null) {
-            this.username = this.student.getPersonalInfo().getBirthCertificateId().toString();
+            this.username = this.student.getBirthCertificateId().toString();
             this.password = passwordGenerator();
         }
     }
@@ -51,4 +53,13 @@ public class LoanAccount extends BaseEntity<Long> {
         return PasswordGenerator.generatePassword(lengthPassword);
     }
 
+    @Override
+    public String toString() {
+        return "LoanAccount{" +
+                "student=" + student +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", cardInfo=" + cardInfo +
+                "} ";
+    }
 }

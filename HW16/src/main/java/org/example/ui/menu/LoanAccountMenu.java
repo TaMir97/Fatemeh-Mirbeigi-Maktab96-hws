@@ -1,23 +1,28 @@
 package org.example.ui.menu;
 
 import org.example.domain.CardInfo;
+import org.example.domain.Loan;
 import org.example.domain.LoanAccount;
 import org.example.domain.Student;
 import org.example.domain.enums.*;
 import org.example.service.LoanAccountService;
+import org.example.service.LoanService;
 import org.example.service.StudentService;
 import org.example.ui.Printer;
 import org.example.util.ApplicationContext;
 import org.example.util.Constant;
 import org.example.util.JsonFileReader;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class LoanAccountMenu {
     static StudentService studentService = ApplicationContext.getStudentService();
     static LoanAccountService loanAccountService = ApplicationContext.getLoanAccountService();
+    static LoanService loanService = ApplicationContext.getLoanService();
 
     static LoanAccount loanAccount = new LoanAccount();
+    static LocalDate registerDate = LocalDate.now();
 
     static Scanner input = new Scanner(System.in);
 
@@ -93,7 +98,7 @@ public class LoanAccountMenu {
         UniversityType universityType = universityTypes[selectedUniversityTypeIndex - 1];
 
         GovernmentUniversity governmentUniversity = null;
-        if (universityType.equals(UniversityType.DOWLATI)){
+        if (universityType.equals(UniversityType.DOWLATI)) {
             System.out.println("Enter governmentUniversityType: ");
             GovernmentUniversity[] governmentUniversities = GovernmentUniversity.values();
             for (int i = 0; i < governmentUniversities.length; i++) {
@@ -163,7 +168,7 @@ public class LoanAccountMenu {
         System.out.println("password: ");
         String username = input.nextLine();
         String password = input.nextLine();
-        if (loanAccountService.login(username,password) != null){
+        if (loanAccountService.login(username, password) != null) {
             boolean initialMenuLoop = true;
             while (initialMenuLoop) {
                 System.out.println("Enter your choice: ");
@@ -172,7 +177,8 @@ public class LoanAccountMenu {
                 switch (initialInput) {
                     case "1" -> InstallmentMenu.payment();
                     case "2" -> chooseALoanType();
-                    case "3" -> initialMenuLoop = false;
+                    case "3" -> updateField();
+                    case "4" -> initialMenuLoop = false;
                     default -> System.out.println("This choice does not exist.");
                 }
             }
@@ -180,17 +186,28 @@ public class LoanAccountMenu {
 
     }
 
+    private static void updateField() {
+        Constant.updateSingleField(loanAccount.getStudent());
+    }
+
     public static void chooseALoanType() {
-        if (!loanAccountService.graduationState(loanAccount)){
+        if (!loanAccountService.graduationState(loanAccount)) {
             boolean initialMenuLoop = true;
-            while (initialMenuLoop) {
+            while (initialMenuLoop
+                    || (registerDate.isBefore(LocalDate.ofYearDay(2023, 217))) && registerDate.isAfter(LocalDate.ofYearDay(2023, 224))
+                    || (registerDate.isBefore(LocalDate.ofYearDay(2023, 300))) && registerDate.isAfter(LocalDate.ofYearDay(2023, 307))) {
                 System.out.println("Enter your choice: ");
                 Printer.printItem(Constant.LOAN_TYPE, "Loan Type: ");
                 String initialInput = input.nextLine();
                 switch (initialInput) {
                     case "1" -> mortgage();
                     case "2" -> educational();
-                    case "3" -> tuition();
+                    case "3" -> {
+                        if (!loanAccount.getStudent().getUniversityType().equals(UniversityType.DOWLATI)
+                                || loanAccount.getStudent().getGovernmentUniversityType().equals(GovernmentUniversity.NO_FUNDED)) {
+                            tuition();
+                        }
+                    }
                     case "4" -> initialMenuLoop = false;
                     default -> System.out.println("This choice does not exist.");
                 }
@@ -199,12 +216,65 @@ public class LoanAccountMenu {
     }
 
     private static void mortgage() {
-        
+        Long totalAmount;
+        if (loanAccount.getStudent().getGrade().equals(EducationalGrade.ASSOCIATE) ||
+                loanAccount.getStudent().getGrade().equals(EducationalGrade.BACHELOR) ||
+                !loanService.mortgageLoan(loanAccount) ||
+                !loanAccount.getStudent().getHomeCity().equals(loanAccount.getStudent().getCity())
+        ) {
+            totalAmount = 1_900_000L;
+        } else if (loanAccount.getStudent().getGrade().equals(EducationalGrade.MASTER)) {
+            totalAmount = 2_250_000L;
+        } else {
+            totalAmount = 2_600_000L;
+        }
+        LoanType loanType = LoanType.MORTGAGE;
+        Loan loan = new Loan();
+        loan.setLoanAccount(loanAccount);
+        loan.setLoanType(loanType);
+        loan.setRegisterDate(registerDate);
+        loan.setTotalAmount(totalAmount);
+
+        loanService.save(loan);
     }
 
     private static void educational() {
+        Long totalAmount;
+        if (loanAccount.getStudent().getGrade().equals(EducationalGrade.ASSOCIATE) ||
+                loanAccount.getStudent().getGrade().equals(EducationalGrade.BACHELOR)) {
+            totalAmount = 1_300_000L;
+        } else if (loanAccount.getStudent().getGrade().equals(EducationalGrade.MASTER)) {
+            totalAmount = 2_600_000L;
+        } else {
+            totalAmount = 65_000_000L;
+        }
+        LoanType loanType = LoanType.EDUCATIONAL;
+        Loan loan = new Loan();
+        loan.setLoanAccount(loanAccount);
+        loan.setLoanType(loanType);
+        loan.setRegisterDate(registerDate);
+        loan.setTotalAmount(totalAmount);
+
+        loanService.save(loan);
     }
 
     private static void tuition() {
+        Long totalAmount;
+        if (loanAccount.getStudent().getGrade().equals(EducationalGrade.ASSOCIATE) ||
+                loanAccount.getStudent().getGrade().equals(EducationalGrade.BACHELOR)) {
+            totalAmount = 1_900_000L;
+        } else if (loanAccount.getStudent().getGrade().equals(EducationalGrade.MASTER)) {
+            totalAmount = 2_250_000L;
+        } else {
+            totalAmount = 2_600_000L;
+        }
+        LoanType loanType = LoanType.MORTGAGE;
+        Loan loan = new Loan();
+        loan.setLoanAccount(loanAccount);
+        loan.setLoanType(loanType);
+        loan.setRegisterDate(registerDate);
+        loan.setTotalAmount(totalAmount);
+
+        loanService.save(loan);
     }
 }

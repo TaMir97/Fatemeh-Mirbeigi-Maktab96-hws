@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c903c8-9ba4-4407-8376-ef6aa16a9fb6" name="Changes" comment="refactor">
-      <change afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/Loan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/util/DateRange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/util/DateRangeValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW16/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/LoanAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/LoanAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/domain/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW16/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW16/src/main/java/org/example/ui/menu/LoanAccountMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW16/src/main/java/org/example/ui/menu/LoanAccountMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +137,7 @@
       <workItem from="1694027988600" duration="2440000" />
       <workItem from="1694499424443" duration="961000" />
       <workItem from="1694579604120" duration="650000" />
+      <workItem from="1694704627464" duration="13692000" />
     </task>
     <task id="LOCAL-00004" summary="Person Entity">
       <created>1692685992777</created>

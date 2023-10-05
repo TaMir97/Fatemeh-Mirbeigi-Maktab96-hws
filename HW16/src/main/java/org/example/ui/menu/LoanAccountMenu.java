@@ -298,7 +298,7 @@ public class LoanAccountMenu {
         } else {
             totalAmount = 2_600_000L;
         }
-        LoanType loanType = LoanType.MORTGAGE;
+        LoanType loanType = LoanType.TUITION;
         Loan loan = new Loan();
         loan.setLoanAccount(loanAccount);
         loan.setLoanType(loanType);

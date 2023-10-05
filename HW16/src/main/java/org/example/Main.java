@@ -10,6 +10,7 @@ import org.example.repository.impl.StudentRepoImpl;
 import org.example.service.LoanAccountService;
 import org.example.service.StudentService;
 import org.example.ui.Menu;
+import org.example.ui.menu.LoanAccountMenu;
 import org.example.util.ApplicationContext;
 import org.example.util.JsonFileReader;
 
@@ -22,6 +23,7 @@ public class Main {
     public static void main(String[] args) {
 
         Menu.run();
+//        LoanAccountMenu.tuition();
 
 
     }
